@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title>Example</title>
+      <title>Welcome to Burgers</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <!-- Do not add `link` tags unless you know what you are doing -->
@@ -13,13 +13,111 @@
     </head>
     <body class="container-fluid">
       <h1>Example</h1>
+      <!-- ========= Authenticat Container ============ -->
+      <!-- SIGN IN -->
+      <div id="signInModal" class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <div class="form-title ">
+              <h3 class="sign-in-msg form-header">Please log in to play </h3>
+            </div>
+          </div>
+              <div class="auth-alert">
+                <h3 id="signInError" class="form-error" ></h3>
+              </div>
+              <div class="modal-body">
+        <form id="sign-in">
+          <div class="form-group blue-text">
+           <label for="name">Email</label>
+           <input type="text" name="credentials[email]" class="form-control" value="" placeholder="Email">
+           <label for="name">Password</label>
+           <input type="password" name="credentials[password]" class="form-control" value="" placeholder="Password">
+         </div>
+         <div class="padding">
+          <button type="submit" name="submit" value="SignIn" class="btn btn-primary form-button">submit</button>
+        </div>
+      <div class="modal-footer"></div>
+      <div id="register" class="form-subtext register">
+        <p>Not Registered ?
+          <span id="sign-up-form" class="form-link"><a href='#'>Sign Up Here</a></span>
+        </p>
+      </div>
+      <div class="modal-footer"></div>
+          </form>
+      </div>
+        </div>
+      </div>
 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-      eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-      minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-      ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-      velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-      est laborum.</p>
+      <!-- SIGN UP -->
+      <div id="signUpModal" class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <div class="form-title mdl-card__title">
+              <h3 class="form-header">Create New Account</h3>
+            </div>
+              </div>
+              <div class="auth-alert">
+                <h3 id="signUpError" class="form-error"></h3>
+              </div>
+              <div class="modal-body">
+                 <form id="sign-up">
+                   <div class="form-group blue-text">
+                    <label for="name">Email</label>
+                    <input type="text" name="credentials[email]" class="form-control" value="" placeholder="Email">
+                    <label for="name">Password</label>
+                    <input type="password" name="credentials[password]" class="form-control" value="" placeholder="Password">
+                    <label for="name">Password Confirmation</label>
+                    <input type="password" name="credentials[password_confirmation]" class="form-control" value="" placeholder="Confirm Password">
+                   </div>
+                   <button type="submit" name="submit" value="SignUp" class="btn btn-primary form-button">submit</button>
+                   <div class="modal-footer"></div>
+                   <div class="form-subtext">
+                     <p>Did you get here on accident ?
+                       <span id="return-to-log-in" class="form-link"><a href='#'>Return to LogIn</a></span>
+                     </p>
+                   </div>
+                   <div class="modal-footer"></div>
+                 </form>
+              </div>
+        </div>
+      </div>
+
+      <!-- Change Password Modal-->
+        <div id="changePasswordModal" class="modal fade modal-dialog" role="document">
+
+        <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <div class="form-title mdl-card__title">
+              <h3 class="form-header">Change Your Password</h3>
+            </div>
+          </div>
+
+          <div class="auth-alert">
+            <h3 id="ChangePasswordError" class="form-error"></h3>
+            <h3 id="ChangePasswordSuccess" class="form-success"></h3>
+          </div>
+          <div class="modal-body">
+          <form id="change-password">
+            <fieldset>
+              <div class="form-group-pw blue-text">
+               <label for="name">Old Password</label>
+               <input type="password" name="passwords[old]" class="form-control" value="" placeholder="Old Password">
+               <label for="name">New Password</label>
+               <input type="password" name="passwords[new]" class="form-control" value="" placeholder="New Password">
+
+               <div class="padding"></div>
+              <button id="changePasswordSubmit" type="submit" name="submit" value="Change Password" class="btn btn-primary">submit</button>
+            </div>
+            <div class="padding"></div>
+              <button id="changePasswordModalClose" type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+              </fieldset>
+          </form>
+        </div>
+            </div>
+              </div>
+        </div>
+      <!-- END MODAL -->
+
     </body>
 </html>
