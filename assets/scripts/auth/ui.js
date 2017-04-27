@@ -22,7 +22,7 @@ const signUpFailure = (error) => {
 
 const signInSuccess = (data) => {
   store.user = data.user
-  // console.log(store.user)
+  console.log(store.user)
   $('#signUpModal').hide()
   $('.header-message').hide()
   $('#signInModal').hide()
