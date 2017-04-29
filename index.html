@@ -55,8 +55,8 @@
               <div class="modal-body">
         <form id="sign-in">
           <div class="form-group blue-text">
-           <label for="name">Email</label>
-           <input type="text" name="credentials[email]" class="form-control" value="" placeholder="Email">
+            <label for="name">Email</label>
+            <input type="text" name="credentials[email]" class="form-control" value="" placeholder="Email">
            <label for="name">Password</label>
            <input type="password" name="credentials[password]" class="form-control" value="" placeholder="Password">
          </div>
@@ -89,6 +89,9 @@
               <div class="modal-body">
                  <form id="sign-up">
                    <div class="form-group blue-text">
+                       <!-- <label for="name">Username</label>
+                       <input type="text" name="credentials[username]" class="form-control" value="" placeholder="Username"> -->
+
                     <label for="name">Email</label>
                     <input type="text" name="credentials[email]" class="form-control" value="" placeholder="Email">
                     <label for="name">Password</label>
@@ -145,6 +148,29 @@
               </div>
         </div>
 <!-- END MODAL -->
+<!-- body contain-->
+    <div class="container">
+      <!-- ADD TASK modal -->
+    <button type="button" class="btn btn-success add-task aftersignin hidden" data-toggle="modal" data-target=".bs-example-modal-lg">Add Task</button>
+
+      <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h3 class="modal-title" id="myModalLabel">Add Task</h3>
+            </div>
+            <div class="modal-body">
+              <form id="add-task">
+                <input name="task[name]" type="text" placeholder="Name"><br>
+              </form>
+              <button type="button" class="btn btn-success" data-dismiss="modal" id="add-task-button">Submit</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+  <!-- end of ADD TASK modal -->
 
 
 <!-- END AUTHENTICATION -->
@@ -182,7 +208,7 @@
       </form> -->
 
 <!-- END AUTHENTICATION -->
-
+<!--
 
         <h1>Book CRUD</h1>
         <h2>Get All Books</h2>
@@ -225,10 +251,50 @@
             <input type="text" name="book[author]" author="book-author-create" placeholder="Resource Author Here">
           </div>
           <button type="submit" class="btn btn-default">Create New Book</button>
-        </form>
+        </form> -->
 
 
+      <h1>Task CRUD</h1>
+      <h2>Get All Tasks</h2>
+      <form class='tasks' id='tasks-search'>
+        <div class="form-group">
+        </div>
+        <button type="submit" class="btn btn-default">Get All Tasks</button>
+      </form>
 
+      <h2>Get One Task</h2>
+      <form class='tasks' id='task-search'>
+        <div class="form-group">
+          <input type="text" name="task[id]" id="task-id" placeholder="Resource ID Here">
+        </div>
+        <button type="submit" class="btn btn-default">Get Task</button>
+      </form>
+
+      <h2>Delete One Task</h2>
+      <form class='tasks' id='task-delete'>
+        <div class="form-group">
+          <input type="text" name="task[id]" id="task-id-delete" placeholder="Resource ID Here">
+        </div>
+        <button type="submit" class="btn btn-default">Delete Task</button>
+      </form>
+
+      <h2>Update One Task</h2>
+      <form class='tasks' id='task-update'>
+        <div class="form-group">
+          <input type="text" name="task[id]" id="task-id-update" placeholder="Resource ID Here">
+          <input type="text" name="task[title]" author="task-title-update" placeholder="Resource Title Here">
+          <input type="text" name="task[author]" author="task-author-update" placeholder="Resource Author Here">
+        </div>
+        <button type="submit" class="btn btn-default">Update Task</button>
+      </form>
+      <h2>Create One Task</h2>
+      <form class='tasks' id='task-create'>
+        <div class="form-group">
+          <input type="text" name="task[title]" author="task-title-create" placeholder="Resource Title Here">
+          <input type="text" name="task[author]" author="task-author-create" placeholder="Resource Author Here">
+        </div>
+        <button type="submit" class="btn btn-default">Create New Task</button>
+      </form>
 
 
     </body>
