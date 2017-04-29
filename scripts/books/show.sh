@@ -1,1 +1,3 @@
-curl --include --request GET http://localhost:3000/books/2
+#!/bin/bash
+
+curl --include --request GET http://localhost:4741/books/2

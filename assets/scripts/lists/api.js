@@ -1,23 +1,19 @@
 'use strict'
 
-const app = require('../app.js')
-const events = require('../events')
+const config = require('../config')
+const ui = require('./ui')
 const store = require('../store')
-
-// Task API
-// create task
-
-
+const events = require('./events')
 
 const createTask = function (data) {
-return   $.ajax({
+  return $.ajax({
     url: config.apiOrigin + '/tasks',
     method: 'POST',
     headers: {
-      Authorization: 'Token token=' + myApp.user.token,
+      Authorization: 'Token token=' + store.user.token
     },
     data
-})
+  })
 }
 
 const getUserTasks = function () {
@@ -25,7 +21,7 @@ const getUserTasks = function () {
     url: config.apiOrigin + '/tasks',
     method: 'GET',
     headers: {
-      Authorization: 'Token token=' + store.user.token,
+      Authorization: 'Token token=' + store.user.token
     },
     dataType: 'json'
   })
@@ -33,34 +29,35 @@ const getUserTasks = function () {
   .catch(ui.getUserTasksFailure)
 }
 
-const deleteTask = function (date) {
-return $.ajax({
+const deleteTask = function (data) {
+  return $.ajax({
     url: config.apiOrigin + '/tasks/' + $(event.target).attr('data-id'),
     method: 'DELETE',
     headers: {
-      Authorization: 'Token token=' + store.user.token,
+      Authorization: 'Token token=' + store.user.token
     },
-})
+    data
+  })
+}
 
-
-const markComplete = function(data) {
-    return $.ajax({
-    url: myApp.baseUrl + '/tasks/' + $(event.target).attr('data-id'),
+const markComplete = function (data) {
+  return $.ajax({
+    url: config.apiOrigin + '/tasks/' + $(event.target).attr('data-id'),
     method: 'PATCH',
     headers: {
-      Authorization: 'Token token=' + store.user.token,
+      Authorization: 'Token token=' + store.user.token
     },
     data: {
-      "task":{
-        "completed": check
+      'task': {
+        'completed': events.check
       }
     }
   })
 }
 
-
-
 module.exports = {
-  index,
+  createTask,
+  getUserTasks,
+  deleteTask,
   markComplete
 }

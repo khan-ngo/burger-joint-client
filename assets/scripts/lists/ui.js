@@ -1,6 +1,6 @@
 'use strict'
 
-cnst createTaskSuccess = function () {
+const createTaskSuccess = function () {
   console.log(data)
   api.getUserTasks()
   console.log('CreateTask completed successfully.')
