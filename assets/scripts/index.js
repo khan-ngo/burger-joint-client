@@ -14,10 +14,10 @@ $(() => {
 require('./example')
 
 const authEvents = require('./auth/events.js')
-const tasksEvents = require('./tasks/events.js')
+const jobsEvents = require('./jobs/events.js')
 
 // on document ready
 $(() => {
   authEvents.addHandlers()
-  tasksEvents.addHandlers()
+  jobsEvents.addHandlers()
 })
