@@ -11,7 +11,7 @@ const getFormFields = require('../../../lib/get-form-fields')
 // button is clicked
 const onGetTasks = function (event) {
   event.preventDefault()
-
+  console.log('You clicked on the "Get All Tasks" button!')
   api.index()
     .then(ui.onSuccess)
     .catch(ui.onError)
@@ -95,5 +95,5 @@ const addHandlers = () => {
 }
 
 module.exports = {
-addHandlers
+  addHandlers
 }

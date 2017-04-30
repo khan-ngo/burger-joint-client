@@ -3,7 +3,6 @@
 // user require with a reference to bundle the file and use it in this file
 // var example = require('./example')
 
-
 const myApp = {
 baseUrl: 'https://tiger-tiger.herokuapp.com',
 }
@@ -11,7 +10,6 @@ baseUrl: 'https://tiger-tiger.herokuapp.com',
 const clear = function () {
   $('.content').empty()
 }
-
 
 const onCreateTask = function (event) {
   const data = getFormFields(this)
@@ -40,6 +38,7 @@ const onDeleteTask = function (event) {
     .then(ui.deleteTaskSuccess)
     .catch(ui.deleteTaskFailure)
   }
+}
 
 const onmarkComplete = function(event) {
   event.preventDefault()
@@ -54,12 +53,12 @@ const onmarkComplete = function(event) {
   .then(ui.markCompleteSuccess)
   .catch(ui.markCompleteFailure)
   }
+}
 
 $(document).ready(function(){
-
   //tasks selectors
   $('#add-task-button').on('click', createTask)
-  $('body').on('click', '.task-close', deleteTask)
+  $('body').on('click', '.task-close', onDeleteTask)
   $('body').on('click', '.edit', markComplete)
 
 })
