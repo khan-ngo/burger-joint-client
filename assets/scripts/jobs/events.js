@@ -3,6 +3,8 @@
 const getFormFields = require(`../../../lib/get-form-fields`)
 const api = require('./api.js')
 const ui = require('./ui.js')
+const app = require('../app.js')
+const store = require('../store')
 
 const onCreateJob = function (event) {
   event.preventDefault()
@@ -12,14 +14,6 @@ const onCreateJob = function (event) {
   api.createJob(data)
   .then(ui.onCreateJobSuccess)
   .catch(ui.onCreateJobError)
-}
-
-const onGetJobs = function (event) {
-  event.preventDefault()
-
-  api.index()
-    .then(ui.onGetJobsSuccess)
-    .catch(ui.onGetJobsError)
 }
 
 const onGetJob = function (event) {
@@ -53,7 +47,7 @@ const onUpdateJob = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
   const job = data.job
-  console.log('You are inside onUpdateBook Function.')
+  console.log('You are inside onUpdateJob Function.')
   console.log('event.target: ', event.target)
 
   if (job.id.length !== 0) {
@@ -65,6 +59,39 @@ const onUpdateJob = function (event) {
   }
 }
 
+const onGetJobs = function (event) {
+  event.preventDefault()
+
+  api.getJobs()
+    .then(ui.onGetJobsSuccess)
+    .catch(ui.onGetJobsFailure)
+}
+
+const onClearJobs = function (event) {
+  event.preventDefault()
+  $('.content').empty()
+}
+
+const displayTasks = function (response) {
+  $('.content').empty()
+  console.log(response.jobs)
+  const responseJobs = response.jobs
+  const jobListingTemplate = require('../templates/job.listing.handlebars')
+  $('.content').append(jobListingTemplate({responseJobs}))
+}
+
+const deleteTask = function (event) {
+  event.preventDefault()
+console.log(this)
+  $.ajax({
+    url: app.host + '/jobs/' + (event.target).getAttribute('id'),
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 const addHandlers = () => {
   $('#job-create').on('submit', onCreateJob)
   $('#jobs-search').on('submit', onGetJobs)
@@ -72,6 +99,9 @@ const addHandlers = () => {
   $('#job-delete').on('submit', onDeleteJob)
   $('#job-update').on('submit', onUpdateJob)
   $('#job-create-modal').on('submit', onCreateJob)
+  $('#getJobsButton').on('click', onGetJobs)
+  $('#clearJobsButton').on('click', onClearJobs)
+  $('body').on('click', '.task-close', deleteTask)
 }
 
 module.exports = {

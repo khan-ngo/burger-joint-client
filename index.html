@@ -154,8 +154,10 @@
 
 
     <button id="add-task-btn" type="button" class="btn btn-primary addTaskBtn" data-toggle="modal" data-target=".bs-example-modal-lg">Add Task</button>
+    <button id="getJobsButton" class="btn btn-primary">Get Tasks</button>
+    <button id="clearJobsButton" class="btn btn-primary">Hide Tasks</button>
 
-    <div class="container">
+    <div class="container-fluid">
       <div id="job-create-modal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
@@ -175,16 +177,24 @@
                   <div class="modal-footer">
                   <button type="submit" name="submit" value="CreateJob" class="btn btn-primary form-button">Create New Job</button>
                   <button id="addNewJobModalClose" type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+
                 </div>
               </form>
+
             </div>
           </div>
         </div>
       </div>
 </div>
   <!-- end of ADD TASK modal -->
+  <div class="jumbotron jumbotron-fluid beforesignin">
+    <div class="container">
+      <div id="content" class="content"></div>
+    </div>
+  </div>
 
-<div id="job-crud-container" class="container hidden">
+<!-- START CRUD -->
+<div id="job-crud-container" class="container">
   <h1>Job CRUD</h1>
   <h2>Create Job</h2>
   <form class='jobs' id='job-create'>
@@ -212,6 +222,7 @@
   <h2>Delete Job</h2>
   <form class='jobs' id='job-delete'>
     <div class="form-group">
+      <!-- <input type="text" name="job[id]" id="job-id-delete" placeholder="Resource ID Here"> -->
       <input type="text" name="job[id]" id="job-id-delete" placeholder="Resource ID Here">
     </div>
     <button type="submit" class="btn btn-default">Delete Task</button>
@@ -226,6 +237,7 @@
     <button type="submit" class="btn btn-default">Update Task</button>
   </form>
 </div>
+<!-- END CRUD -->
 
     </body>
 </html>

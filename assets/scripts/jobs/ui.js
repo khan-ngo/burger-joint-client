@@ -1,5 +1,7 @@
 'use strict'
 
+const showJobsTemplate = require('../templates/job.listing.handlebars')
+
 const onSuccess = function (data) {
   if (!data) {
     console.warn('Either you deleted something, or something went wrong.')
@@ -41,18 +43,15 @@ const onCreateJobError = function (data) {
   }, 1000)
 }
 
-const onGetJobsSuccess = function () {
-  console.log('onGetJobsSuccess')
-}
-const onGetJobsError = (error) => {
-  console.error(error)
+const onGetJobsFailure = (error) => {
+  console.error('onGetJobsFailure: ', error)
 }
 
 const onGetJobSuccess = function () {
   console.log('onGetJobSuccess')
 }
 const onGetJobFailure = (error) => {
-  console.error(error)
+  console.error('onGetJobFailure: ', error)
 }
 const onDeleteJobSuccess = function () {
   console.log('onDeleteJobSuccess')
@@ -61,16 +60,39 @@ const onDeleteJobFailure = (error) => {
   console.error('onDeleteJobFailure: ', error)
 }
 
+const onGetJobsSuccess = (data) => {
+  console.log('onGetJobsSuccess: ', data)
+
+  const showJobsHtml = showJobsTemplate({ jobs: data.jobs })
+  $('.content').append(showJobsHtml)
+}
+
+const failure = (error) => {
+  console.error(error)
+}
+
+const getUserTasksSuccess = function (data) {
+  // displayTasks(data)
+  console.log('getUserTasksSuccess data: ', data)
+}
+
+const getUserTasksFailure = function (error) {
+  console.error('getUserTasksFailure: ', error)
+}
+
 module.exports = {
   onCreateJobSuccess,
   onCreateJobError,
   onGetJobsSuccess,
-  onGetJobsError,
+  onGetJobsFailure,
   onGetJobSuccess,
   onGetJobFailure,
   onDeleteJobSuccess,
   onDeleteJobFailure,
   onSuccess,
   onSuccessNoContent,
-  onError
+  onError,
+  failure,
+  getUserTasksSuccess,
+  getUserTasksFailure
 }

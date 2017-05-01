@@ -23,8 +23,9 @@ const signInSuccess = (data) => {
   store.user = data.user
   console.log(store.user)
 
-  $('.navbar').show()
   $('#add-task-btn').show()
+  $('.navbar').show()
+  $('.nav-btns').show()
 
   $('#signUpModal').hide()
   $('.header-message').hide()
