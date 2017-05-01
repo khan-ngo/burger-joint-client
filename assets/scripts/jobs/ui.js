@@ -1,6 +1,6 @@
 'use strict'
 
-const showJobsTemplate = require('../templates/job-listing.handlebars')
+const showJobsTemplate = require('../templates/job.listing.handlebars')
 
 const onSuccess = function (data) {
   if (!data) {
@@ -61,11 +61,10 @@ const onDeleteJobFailure = (error) => {
 }
 
 const onGetJobsSuccess = (data) => {
-  console.log(data)
+  console.log('onGetJobsSuccess: ', data)
+
   const showJobsHtml = showJobsTemplate({ jobs: data.jobs })
   $('.content').append(showJobsHtml)
-  console.log('GetJobsSuccess')
-    // events.displayTasks(data)
 }
 
 const clearJobs = () => {
@@ -76,8 +75,8 @@ const failure = (error) => {
   console.error(error)
 }
 
-const getUserTasksSuccess = function () {
-  displayTasks(data)
+const getUserTasksSuccess = function (data) {
+  // displayTasks(data)
   console.log('getUserTasksSuccess data: ', data)
 }
 
