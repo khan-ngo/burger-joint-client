@@ -22,9 +22,6 @@
 
             <button id="change-password-modal" type="button" class="btn btn-primary btn-sm navbar-center change-pw" data-toggle="modal" data-target="#changePasswordModal">Changing Password</button>
 
-
-            <button type="button" class="btn btn-success add-task" data-toggle="modal" data-target=".bs-example-modal-lg">Add Task</button>
-
             <!-- <span id="nav-message" class="navbar-center">Tic-Tac-Toe</span> -->
 
               <span id="nav-message" class="nav-message navbar-right"></span>
@@ -39,7 +36,7 @@
           <h1 id="salutaion-message" class="title_message">Welcome</h1>
         </div>
         <div id="header-message">
-          <h3 class="header-message">You Need to Log in to play</h3>
+          <h3 class="header-message">Please Log-In</h3>
         </div>
       </div>
 
@@ -49,7 +46,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <div class="form-title ">
-              <h3 class="sign-in-msg form-header">Please log in to play </h3>
+              <h3 class="sign-in-msg form-header">Please Log-In </h3>
             </div>
           </div>
               <div class="auth-alert">
@@ -79,7 +76,7 @@
       </div>
 
       <!-- SIGN UP -->
-      <div id="signUpModal" class="modal-dialog" role="document">
+      <div id="signUpModal" class="modal-dialog hidden" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <div class="form-title mdl-card__title">
@@ -153,10 +150,12 @@
 <!-- END MODAL -->
 
 <!-- body contain-->
-    <div class="container">
       <!-- ADD TASK modal -->
 
+
     <button type="button" class="btn btn-success add-task" data-toggle="modal" data-target=".bs-example-modal-lg">Add Task</button>
+
+    <div class="container">
 
       <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
         <div class="modal-dialog modal-lg">
@@ -175,8 +174,10 @@
           </div>
         </div>
       </div>
+    </div>
   <!-- end of ADD TASK modal -->
 
+<div id="job-crud-container" class="container hidden">
   <h1>Job CRUD</h1>
   <h2>Create Job</h2>
   <form class='jobs' id='job-create'>
@@ -209,58 +210,15 @@
     <button type="submit" class="btn btn-default">Delete Task</button>
   </form>
 
-  <h2>Update One Task</h2>
+  <h2>Update Job</h2>
   <form class='jobs' id='job-update'>
     <div class="form-group">
       <input type="text" name="job[id]" id="job-id-update" placeholder="Resource ID Here">
-      <input type="text" name="job[task]" author="job-title-update" placeholder="Resource Title Here">
+      <input type="text" name="job[task]" id="job-task-update" placeholder="Resource task Here">
     </div>
     <button type="submit" class="btn btn-default">Update Task</button>
   </form>
-
-
-
-      <!-- <h1>Task CRUD</h1>
-      <h2>Get All Tasks</h2>
-      <form class='tasks' id='tasks-search'>
-        <div class="form-group">
-        </div>
-        <button type="submit" class="btn btn-default">Get All Tasks</button>
-      </form>
-
-      <h2>Get One Task</h2>
-      <form class='tasks' id='task-search'>
-        <div class="form-group">
-          <input type="text" name="task[id]" id="task-id" placeholder="Resource ID Here">
-        </div>
-        <button type="submit" class="btn btn-default">Get Task</button>
-      </form>
-
-      <h2>Delete One Task</h2>
-      <form class='tasks' id='task-delete'>
-        <div class="form-group">
-          <input type="text" name="task[id]" id="task-id-delete" placeholder="Resource ID Here">
-        </div>
-        <button type="submit" class="btn btn-default">Delete Task</button>
-      </form>
-
-      <h2>Update One Task</h2>
-      <form class='tasks' id='task-update'>
-        <div class="form-group">
-          <input type="text" name="task[id]" id="task-id-update" placeholder="Resource ID Here">
-          <input type="text" name="task[title]" author="task-title-update" placeholder="Resource Title Here">
-          <input type="text" name="task[author]" author="task-author-update" placeholder="Resource Author Here">
-        </div>
-        <button type="submit" class="btn btn-default">Update Task</button>
-      </form>
-      <h2>Create One Task</h2>
-      <form class='tasks' id='task-create'>
-        <div class="form-group">
-          <input type="text" name="task[title]" author="task-title-create" placeholder="Resource Title Here">
-          <input type="text" name="task[author]" author="task-author-create" placeholder="Resource Author Here">
-        </div>
-        <button type="submit" class="btn btn-default">Create New Task</button>
-      </form> -->
+</div>
 
     </body>
 </html>

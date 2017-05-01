@@ -13,22 +13,6 @@ const ui = require('./ui.js')
 // beginning with 'on' to denote that it is done when the GET /jobs
 // button is clicked
 
-const onUpdateJob = function (event) {
-  event.preventDefault()
-  const data = getFormFields(event.target)
-  const job = data.job
-  console.log('You are inside onUpdateJob Function.')
-  console.log('event.target: ', event.target)
-
-  if (job.id.length !== 0) {
-    api.update(data)
-    .then(ui.onUpdateSuccess)
-    .catch(ui.onUpdateJobError)
-  } else {
-    console.log('Please provide ID to update job data!')
-  }
-}
-
 // const onUpdateJob = function (event) {
 //   event.preventDefault()
 //   const data = getFormFields(event.target)
@@ -55,7 +39,7 @@ const onCreateJob = function (event) {
 
 const onGetJobs = function (event) {
   event.preventDefault()
-  console.log('You clicked on the "Get All Jobs" button!')
+
   api.index()
     .then(ui.onGetJobsSuccess)
     .catch(ui.onGetJobsError)
@@ -71,7 +55,7 @@ const onGetJob = function (event) {
     .then(ui.onGetJobSuccess)
     .catch(ui.onGetJobFailure)
   } else {
-    console.log('Please provide a book id!')
+    console.log('Please provide a job id!')
   }
 }
 
@@ -88,13 +72,27 @@ const onDeleteJob = function (event) {
   }
 }
 
+const onUpdateJob = function (event) {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  const job = data.job
+  console.log('You are inside onUpdateBook Function.')
+  console.log('event.target: ', event.target)
+
+  if (job.id.length !== 0) {
+    api.update(data)
+    .then(ui.onUpdateSuccess)
+    .catch(ui.onUpdateJobFailure)
+  } else {
+    console.log('Please provide ID to update job data!')
+  }
+}
+
 const addHandlers = () => {
   $('#job-create').on('submit', onCreateJob)
   $('#jobs-search').on('submit', onGetJobs)
   $('#job-search').on('submit', onGetJob)
-
   $('#job-delete').on('submit', onDeleteJob)
-
   $('#job-update').on('submit', onUpdateJob)
 }
 

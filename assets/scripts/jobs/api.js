@@ -18,8 +18,10 @@ const destroy = function (id) {
 }
 
 const update = function (data) {
+  console.log('You made it inside the update api')
+
   return $.ajax({
-    url: app.host + '/jobs/' + data.task.id,
+    url: app.host + '/jobs/' + data.job.id,
     method: 'PATCH',
     data
   })
