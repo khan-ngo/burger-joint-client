@@ -1,9 +1,17 @@
 'use strict'
 
+const store = require('../store')
 const app = require('../app.js')
 const config = require('../config')
 
 const index = function () {
+  return $.ajax({
+    url: app.host + '/jobs',
+    method: 'GET'
+  })
+}
+
+const getJobs = function () {
   return $.ajax({
     url: app.host + '/jobs',
     method: 'GET'
@@ -44,10 +52,23 @@ const show = function (id) {
   })
 }
 
+const getUserTasks = function () {
+  $.ajax({
+    url: config.apiOrigin + '/jobs',
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    dataType: 'json'
+  })
+}
+
 module.exports = {
   createJob,
   index,
+  getJobs,
   show,
   destroy,
   update,
+  getUserTasks
 }

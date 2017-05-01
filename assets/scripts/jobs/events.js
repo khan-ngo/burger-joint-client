@@ -14,7 +14,6 @@ const onCreateJob = function (event) {
   .catch(ui.onCreateJobError)
 }
 
-
 const onGetJob = function (event) {
   event.preventDefault()
   const job = getFormFields(event.target).job
@@ -61,7 +60,7 @@ const onUpdateJob = function (event) {
 const onGetJobs = function (event) {
   event.preventDefault()
 
-  api.index()
+  api.getJobs()
     .then(ui.onGetJobsSuccess)
     .catch(ui.onGetJobsFailure)
 }
@@ -69,6 +68,18 @@ const onGetJobs = function (event) {
 const onClearJobs = (event) => {
   event.preventDefault()
   ui.clearJobs()
+}
+
+const clear = function () {
+  $('.content').empty()
+}
+
+const displayTasks = function (response) {
+  clear()
+  console.log(response.jobs)
+  const responseJobs = response.jobs
+  const jobListingTemplate = require('../templates/job-listing.handlebars')
+  $('.content').append(jobListingTemplate({responseJobs}))
 }
 
 const addHandlers = () => {
