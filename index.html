@@ -76,7 +76,7 @@
       </div>
 
       <!-- SIGN UP -->
-      <div id="signUpModal" class="modal-dialog hidden" role="document">
+      <div id="signUpModal" class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <div class="form-title mdl-card__title">
@@ -153,28 +153,35 @@
       <!-- ADD TASK modal -->
 
 
-    <button type="button" class="btn btn-success add-task" data-toggle="modal" data-target=".bs-example-modal-lg">Add Task</button>
+    <button id="add-task-btn" type="button" class="btn btn-primary addTaskBtn" data-toggle="modal" data-target=".bs-example-modal-lg">Add Task</button>
 
     <div class="container">
-
-      <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+      <div id="job-create-modal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
               <h3 class="modal-title" id="myModalLabel">Add Task</h3>
             </div>
+            <div class="form">
             <div class="modal-body">
-              <form id="add-task">
-                <input name="task[name]" type="text" placeholder="Name"><br>
-              </form>
-              <button type="button" class="btn btn-success" data-dismiss="modal" id="add-task-button">Submit</button>
-            </div>
+              <h4 id="addTaskMsgError" class="form-error"></h4>
+              <h4 id="addTaskMsgSuccess" class="form-success"></h4>
 
+              <form id="job-create-modal-form">
+                  <input type="text" name="job[task]" class="form-control" value="" placeholder="Add New Task Here ... ">
+                  <br>
+                  </div>
+                  <div class="modal-footer">
+                  <button type="submit" name="submit" value="CreateJob" class="btn btn-primary form-button">Create New Job</button>
+                  <button id="addNewJobModalClose" type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+</div>
   <!-- end of ADD TASK modal -->
 
 <div id="job-crud-container" class="container hidden">

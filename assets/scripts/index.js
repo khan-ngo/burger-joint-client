@@ -20,4 +20,7 @@ const jobsEvents = require('./jobs/events.js')
 $(() => {
   authEvents.addHandlers()
   jobsEvents.addHandlers()
+  $('#signUpModal').hide()
+  $('.navbar').hide()
+  $('#add-task-btn').hide()
 })

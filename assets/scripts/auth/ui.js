@@ -5,7 +5,6 @@ const store = require('../store.js')
 const signUpSuccess = (data) => {
   $('#signUpModal').hide()
   $('#signInModal').show()
-  $('.authentication-stuff').show()
   $('.header-message').show().html('Congratulations, you have a new account.')
   $('.sign-in-msg').html('Log in.')
   $('#sign-in').trigger('reset')
@@ -23,11 +22,14 @@ const signUpFailure = (error) => {
 const signInSuccess = (data) => {
   store.user = data.user
   console.log(store.user)
+
+  $('.navbar').show()
+  $('#add-task-btn').show()
+
   $('#signUpModal').hide()
   $('.header-message').hide()
   $('#signInModal').hide()
-  $('.authentication-stuff').show()
-  $('#salutaion-message').html('Burger Joint')
+  $('#salutaion-message').html('ToDo List')
   $('.nav-message').html(store.user.email)
   $('#ChangePasswordSuccess').hide()
   $('#change-password').trigger('reset')

@@ -26,10 +26,19 @@ const onCreateJobSuccess = function (data) {
   } else {
     console.table(data.job)
   }
+  $('#job-create-modal-form').trigger('reset')
+  $('#addTaskMsgSuccess').html('New task Added.')
+  setTimeout(function () {
+    $('#addTaskMsgSuccess').fadeOut(800)
+  }, 1000)
 }
 
 const onCreateJobError = function (data) {
-  console.error('onCreateJobError : something wrong ... ')
+  $('#job-create-modal-form').trigger('reset')
+  $('#addTaskMsgError').html('Task already exist. Add a NEW task.')
+  setTimeout(function () {
+    $('#addTaskMsgError').fadeOut(1000)
+  }, 1000)
 }
 
 const onGetJobsSuccess = function () {

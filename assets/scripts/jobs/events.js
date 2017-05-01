@@ -1,31 +1,8 @@
 'use strict'
 
 const getFormFields = require(`../../../lib/get-form-fields`)
-
 const api = require('./api.js')
 const ui = require('./ui.js')
-
-// const getFormFields = require('../../../lib/get-form-fields')
-
-// get in the habit of naming your handlers, it eases debugging.
-//
-// also, follow a convention for handlers. here, I name my handler
-// beginning with 'on' to denote that it is done when the GET /jobs
-// button is clicked
-
-// const onUpdateJob = function (event) {
-//   event.preventDefault()
-//   const data = getFormFields(event.target)
-//   const job = data.job
-//
-//   if (job.id.length !== 0) {
-//     api.update(data)
-//       .then(ui.onUpdateSuccess)
-//       .catch(ui.onError)
-//   } else {
-//     console.log('Please provide a job id!')
-//   }
-// }
 
 const onCreateJob = function (event) {
   event.preventDefault()
@@ -94,6 +71,7 @@ const addHandlers = () => {
   $('#job-search').on('submit', onGetJob)
   $('#job-delete').on('submit', onDeleteJob)
   $('#job-update').on('submit', onUpdateJob)
+  $('#job-create-modal').on('submit', onCreateJob)
 }
 
 module.exports = {
