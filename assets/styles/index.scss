@@ -1,7 +1,7 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
 
-@import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah');
+// @import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah');
 
 body {
   // color: #dfdfdf;
@@ -102,9 +102,9 @@ body {
   font-size: 30px;
   border-bottom: 1px solid #000;
   color: #000;
-  }
+}
 
-  .game-history {
+.game-history {
   color: #0000ff;
   font-family: cursive;
   font-size: 20px;

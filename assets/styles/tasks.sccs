@@ -1,0 +1,100 @@
+$icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
+@import '~bootstrap-sass/assets/stylesheets/bootstrap';
+
+$dark-gray: #4e4e4e;
+$light-gray: #eeeeee;
+$container-width: 400px;
+$font-size: 70px;
+$dark-green: #3c763d;
+
+body {
+  background-color: $dark-gray;
+  color: $light-gray;
+}
+
+.center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.task {
+    padding: 15px;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    color: $dark-green;
+    background-color: $light-gray;
+    border-color: $light-gray;
+}
+
+.btn {
+  color: $light-gray;
+  background-color: $dark-green;
+  border-color: $dark-green;
+}
+
+.edit {
+  box-sizing: border-box;
+}
+
+.modal-content {
+  background-color: $light-gray;
+  font-size: ($font-size / 3);
+  border-radius: 6px;
+}
+
+form {
+  color: $dark-gray;
+  margin: 40px;
+}
+
+input {
+  margin: 10px;
+}
+
+.modal-header {
+  background-color: $light-gray;
+  border-color: $light-gray;
+  color: $dark-green;
+  text-align: center;
+  font-weight: bolder;
+  border-radius: 6px;
+}
+
+.navbar {
+  font-size: ($font-size / 3);
+  margin: 0;
+}
+
+.navbar-brand {
+  color: $light-gray;
+  float: right;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.navbar-brand:hover {
+  color: $light-gray;
+}
+
+.username {
+  padding: 10px 13px 0 0;
+  text-align: right;
+}
+
+.jumbotron{
+  color: $dark-green;
+}
+
+.task-name {
+  margin-left: 1rem;
+  padding: 0;
+  font-size: 16px;
+}

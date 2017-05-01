@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title>Burger Joint</title>
+      <title>myList</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <!-- Do not add `link` tags unless you know what you are doing -->
@@ -36,7 +36,7 @@
           <h1 id="salutaion-message" class="title_message">Welcome</h1>
         </div>
         <div id="header-message">
-          <h3 class="header-message">You Need to Log in to play</h3>
+          <h3 class="header-message">Please Log-In</h3>
         </div>
       </div>
 
@@ -46,7 +46,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <div class="form-title ">
-              <h3 class="sign-in-msg form-header">Please log in to play </h3>
+              <h3 class="sign-in-msg form-header">Please Log-In </h3>
             </div>
           </div>
               <div class="auth-alert">
@@ -55,8 +55,8 @@
               <div class="modal-body">
         <form id="sign-in">
           <div class="form-group blue-text">
-           <label for="name">Email</label>
-           <input type="text" name="credentials[email]" class="form-control" value="" placeholder="Email">
+            <label for="name">Email</label>
+            <input type="text" name="credentials[email]" class="form-control" value="" placeholder="Email">
            <label for="name">Password</label>
            <input type="password" name="credentials[password]" class="form-control" value="" placeholder="Password">
          </div>
@@ -89,6 +89,9 @@
               <div class="modal-body">
                  <form id="sign-up">
                    <div class="form-group blue-text">
+                       <!-- <label for="name">Username</label>
+                       <input type="text" name="credentials[username]" class="form-control" value="" placeholder="Username"> -->
+
                     <label for="name">Email</label>
                     <input type="text" name="credentials[email]" class="form-control" value="" placeholder="Email">
                     <label for="name">Password</label>
@@ -146,90 +149,83 @@
         </div>
 <!-- END MODAL -->
 
-
-<!-- END AUTHENTICATION -->
-      <!-- <h1>API Token Auth</h1>
-      <form id="sign-up">
-        <fieldset>
-          <legend>Sign up!</legend>
-          <input type="text" name="credentials[email]" value="" placeholder="email">
-          <input type="password" name="credentials[password]" value="" placeholder="password">
-          <input type="password" name="credentials[password_confirmation]" value="" placeholder="password confirmation">
-          <input type="submit" name="submit" value="Sign up!">
-        </fieldset>
-      </form>
-      <form id="sign-in">
-        <fieldset>
-          <legend>Sign in!</legend>
-          <input type="text" name="credentials[email]" value="" placeholder="email">
-          <input type="password" name="credentials[password]" value="" placeholder="password">
-          <input type="submit" name="submit" value="Sign in!">
-        </fieldset>
-      </form>
-      <form id="sign-out">
-        <fieldset>
-          <legend>Sign out!</legend>
-          <input type="submit" name="submit" value="Sign out!">
-        </fieldset>
-      </form>
-      <form id="change-password">
-        <fieldset>
-          <legend>Change Password</legend>
-          <input type="password" name="passwords[old]" value="" placeholder="Old Password">
-          <input type="password" name="passwords[new]" value="" placeholder="New Password">
-          <input type="submit" name="submit" value="Change Password">
-        </fieldset>
-      </form> -->
-
-<!-- END AUTHENTICATION -->
+<!-- body contain-->
+      <!-- ADD TASK modal -->
 
 
-        <h1>Book CRUD</h1>
-        <h2>Get All Books</h2>
-        <form class='books' id='books-search'>
-          <div class="form-group">
+    <button id="add-task-btn" type="button" class="btn btn-primary addTaskBtn" data-toggle="modal" data-target=".bs-example-modal-lg">Add Task</button>
+
+    <div class="container">
+      <div id="job-create-modal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h3 class="modal-title" id="myModalLabel">Add Task</h3>
+            </div>
+            <div class="form">
+            <div class="modal-body">
+              <h4 id="addTaskMsgError" class="form-error"></h4>
+              <h4 id="addTaskMsgSuccess" class="form-success"></h4>
+
+              <form id="job-create-modal-form">
+                  <input type="text" name="job[task]" class="form-control" value="" placeholder="Add New Task Here ... ">
+                  <br>
+                  </div>
+                  <div class="modal-footer">
+                  <button type="submit" name="submit" value="CreateJob" class="btn btn-primary form-button">Create New Job</button>
+                  <button id="addNewJobModalClose" type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+              </form>
+            </div>
           </div>
-          <button type="submit" class="btn btn-default">Get All Books</button>
-        </form>
+        </div>
+      </div>
+</div>
+  <!-- end of ADD TASK modal -->
 
-        <h2>Get One Book</h2>
-        <form class='books' id='book-search'>
-          <div class="form-group">
-            <input type="text" name="book[id]" id="book-id" placeholder="Resource ID Here">
-          </div>
-          <button type="submit" class="btn btn-default">Get Book</button>
-        </form>
+<div id="job-crud-container" class="container hidden">
+  <h1>Job CRUD</h1>
+  <h2>Create Job</h2>
+  <form class='jobs' id='job-create'>
+    <div class="form-group">
+      <input type="text" name="job[task]" class="form-control" value="" placeholder="New Job">
+    </div>
+    <button type="submit" name="submit" value="CreateJob" class="btn btn-primary form-button">Create New Job</button>
+  </form>
 
-        <h2>Delete One Book</h2>
-        <form class='books' id='book-delete'>
-          <div class="form-group">
-            <input type="text" name="book[id]" id="book-id-delete" placeholder="Resource ID Here">
-          </div>
-          <button type="submit" class="btn btn-default">Delete Book</button>
-        </form>
+  <h2>Get All Tasks</h2>
+  <form class='jobs' id='jobs-search'>
+    <div class="form-group">
+    </div>
+    <button type="submit" class="btn btn-default">Get All Tasks</button>
+  </form>
 
-        <h2>Update One Book</h2>
-        <form class='books' id='book-update'>
-          <div class="form-group">
-            <input type="text" name="book[id]" id="book-id-update" placeholder="Resource ID Here">
-            <input type="text" name="book[title]" author="book-title-update" placeholder="Resource Title Here">
-            <input type="text" name="book[author]" author="book-author-update" placeholder="Resource Author Here">
-          </div>
-          <button type="submit" class="btn btn-default">Update Book</button>
-        </form>
+  <h2>Get Job by ID</h2>
+  <form class='jobs' id='job-search'>
+    <div class="form-group">
+      <input type="text" name="job[id]" id="job-id" placeholder="Resource ID Here">
+    </div>
+    <button type="submit" class="btn btn-default">Get Task</button>
+  </form>
 
-        <h2>Create One Book</h2>
-        <form class='books' id='book-create'>
-          <div class="form-group">
-            <input type="text" name="book[title]" author="book-title-create" placeholder="Resource Title Here">
-            <input type="text" name="book[author]" author="book-author-create" placeholder="Resource Author Here">
-          </div>
-          <button type="submit" class="btn btn-default">Create New Book</button>
-        </form>
+  <h2>Delete Job</h2>
+  <form class='jobs' id='job-delete'>
+    <div class="form-group">
+      <input type="text" name="job[id]" id="job-id-delete" placeholder="Resource ID Here">
+    </div>
+    <button type="submit" class="btn btn-default">Delete Task</button>
+  </form>
 
-
-
-
+  <h2>Update Job</h2>
+  <form class='jobs' id='job-update'>
+    <div class="form-group">
+      <input type="text" name="job[id]" id="job-id-update" placeholder="Resource ID Here">
+      <input type="text" name="job[task]" id="job-task-update" placeholder="Resource task Here">
+    </div>
+    <button type="submit" class="btn btn-default">Update Task</button>
+  </form>
+</div>
 
     </body>
 </html>

@@ -8,7 +8,15 @@ const ui = require('./ui')
 const onSignUpClick = function (event) {
   $('#signUpModal').show()
   $('#sign-up').trigger('reset')
+  $('#sign-in').trigger('reset')
   $('#signInModal').hide()
+}
+
+const onSignInClick = function (event) {
+  $('#signUpModal').hide()
+  $('#sign-up').trigger('reset')
+  $('#sign-in').trigger('reset')
+  $('#signInModal').show()
 }
 
 const onSignUp = function (event) {
@@ -43,8 +51,9 @@ const onSignOut = function (event) {
 }
 
 const addHandlers = () => {
-  $('#sign-in').on('submit', onSignIn)
   $('#sign-up-form').on('click', onSignUpClick)
+  $('#return-to-log-in').on('click', onSignInClick)
+  $('#sign-in').on('submit', onSignIn)
   $('#sign-up').on('submit', onSignUp)
   $('#sign-out').on('click', onSignOut)
   $('#change-password').on('submit', onChangePassword)
