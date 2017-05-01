@@ -1,0 +1,16 @@
+{{#each books as |book|}}
+
+  <!-- {{> partial}}
+  Don't uncomment yet -->
+
+ <!-- Developers, why are we using data-id and not just id? -->
+  <h1 data-id="{{job.id}}"> <small>Task: {{book.title}}</small></h1>
+  <div>
+    {{#if job.description}}
+      {{job.description}}
+    {{else}}
+      No description.
+    {{/if}}
+  </div>
+
+{{/each}}

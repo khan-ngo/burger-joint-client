@@ -44,7 +44,7 @@ const onCreateJobError = function (data) {
 const onGetJobsSuccess = function () {
   console.log('onGetJobsSuccess')
 }
-const onGetJobsError = (error) => {
+const onGetJobsFailure = (error) => {
   console.error(error)
 }
 
@@ -61,16 +61,35 @@ const onDeleteJobFailure = (error) => {
   console.error('onDeleteJobFailure: ', error)
 }
 
+const showJobsTemplate = require('../templates/job-listing.handlebars')
+
+const getJobsSuccess = (data) => {
+  console.log(data)
+  const showJobsHtml = showJobsTemplate({ jobs: data.jobs })
+  $('.content').append(showJobsHtml)
+}
+
+const clearJobs = () => {
+  $('.content').empty()
+}
+
+const failure = (error) => {
+  console.error(error)
+}
+
 module.exports = {
   onCreateJobSuccess,
   onCreateJobError,
   onGetJobsSuccess,
-  onGetJobsError,
+  onGetJobsFailure,
   onGetJobSuccess,
   onGetJobFailure,
   onDeleteJobSuccess,
   onDeleteJobFailure,
   onSuccess,
   onSuccessNoContent,
-  onError
+  onError,
+  getJobsSuccess,
+  clearJobs,
+  failure
 }

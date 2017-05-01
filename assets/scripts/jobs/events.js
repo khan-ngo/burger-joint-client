@@ -14,13 +14,6 @@ const onCreateJob = function (event) {
   .catch(ui.onCreateJobError)
 }
 
-const onGetJobs = function (event) {
-  event.preventDefault()
-
-  api.index()
-    .then(ui.onGetJobsSuccess)
-    .catch(ui.onGetJobsError)
-}
 
 const onGetJob = function (event) {
   event.preventDefault()
@@ -53,7 +46,7 @@ const onUpdateJob = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
   const job = data.job
-  console.log('You are inside onUpdateBook Function.')
+  console.log('You are inside onUpdateJob Function.')
   console.log('event.target: ', event.target)
 
   if (job.id.length !== 0) {
@@ -65,6 +58,19 @@ const onUpdateJob = function (event) {
   }
 }
 
+const onGetJobs = function (event) {
+  event.preventDefault()
+
+  api.index()
+    .then(ui.onGetJobsSuccess)
+    .catch(ui.onGetJobsFailure)
+}
+
+const onClearJobs = (event) => {
+  event.preventDefault()
+  ui.clearJobs()
+}
+
 const addHandlers = () => {
   $('#job-create').on('submit', onCreateJob)
   $('#jobs-search').on('submit', onGetJobs)
@@ -72,6 +78,8 @@ const addHandlers = () => {
   $('#job-delete').on('submit', onDeleteJob)
   $('#job-update').on('submit', onUpdateJob)
   $('#job-create-modal').on('submit', onCreateJob)
+  $('#getJobsButton').on('click', onGetJobs)
+  $('#clearJobsButton').on('click', onClearJobs)
 }
 
 module.exports = {

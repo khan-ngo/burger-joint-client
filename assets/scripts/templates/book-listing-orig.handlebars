@@ -1,0 +1,30 @@
+<ul class="book_list">
+
+{{#each books as |book|}}
+  <!-- {{> partial}}
+  Don't uncomment yet -->
+
+ <!-- Developers, why are we using data-id and not just id? -->
+  <li>
+        <h1 data-id="{{book.id}}"> <small>Title: {{book.title}}</small></h1>
+  <div>
+    {{#if book.description}}
+      {{book.description}}
+    {{else}}
+      No description.
+    {{/if}}
+    <br>
+  </li>
+
+
+  <button id="removeBookBtn" class="btn btn-default btn-sm">print console.log</button>
+
+
+
+    <!-- <button id="removeBookBtn" class="btn btn-default btn-sm" onClick="this.parentNode.parentNode.removeChild(this.parentNode);">Remove Book Info</button> -->
+    <!-- <button class="btn btn-default btn-sm" onClick="parentNode.parentNode.removeChild(parentNode)">Remove Book Info</button> -->
+
+
+  </div>
+{{/each}}
+</ul>
