@@ -87,6 +87,7 @@ const addHandlers = () => {
   $('#job-create-modal').on('submit', onCreateJob)
   $('#getJobsButton').on('click', onGetJobs)
   $('#clearJobsButton').on('click', onClearJobs)
+  $('.task-close').on('click', onDeleteJob)
 }
 
 module.exports = {
