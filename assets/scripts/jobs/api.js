@@ -18,13 +18,6 @@ const getJobs = function () {
   })
 }
 
-const destroy = function (id) {
-  return $.ajax({
-    url: app.host + '/jobs/' + id,
-    method: 'DELETE'
-  })
-}
-
 const update = function (data) {
   console.log('You made it inside the update api')
 
@@ -53,13 +46,23 @@ const show = function (id) {
 }
 
 const getUserTasks = function () {
-  $.ajax({
+  return $.ajax({
     url: config.apiOrigin + '/jobs',
     method: 'GET',
     headers: {
       Authorization: 'Token token=' + store.user.token
     },
     dataType: 'json'
+  })
+}
+
+const destroy = function (id) {
+  return $.ajax({
+    url: app.host + '/jobs/' + id,
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
   })
 }
 

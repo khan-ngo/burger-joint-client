@@ -3,6 +3,8 @@
 const getFormFields = require(`../../../lib/get-form-fields`)
 const api = require('./api.js')
 const ui = require('./ui.js')
+const app = require('../app.js')
+const store = require('../store')
 
 const onCreateJob = function (event) {
   event.preventDefault()
@@ -78,6 +80,18 @@ const displayTasks = function (response) {
   $('.content').append(jobListingTemplate({responseJobs}))
 }
 
+const deleteTask = function (event) {
+  event.preventDefault()
+console.log(this)
+  $.ajax({
+    url: app.host + '/jobs/' + (event.target).getAttribute('id'),
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 const addHandlers = () => {
   $('#job-create').on('submit', onCreateJob)
   $('#jobs-search').on('submit', onGetJobs)
@@ -87,7 +101,7 @@ const addHandlers = () => {
   $('#job-create-modal').on('submit', onCreateJob)
   $('#getJobsButton').on('click', onGetJobs)
   $('#clearJobsButton').on('click', onClearJobs)
-  $('.task-close').on('click', onDeleteJob)
+  $('body').on('click', '.task-close', deleteTask)
 }
 
 module.exports = {
