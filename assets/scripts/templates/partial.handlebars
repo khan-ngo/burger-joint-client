@@ -1,1 +1,13 @@
-<br>I'm a partial that is included every <big><i>books</i></big> iteration
+<div class="task center-block" data-value={{id}}>
+  <label data-id={{id}}>
+
+    {{#if completed}}
+      <input class="edit btn" type="checkbox" autocomplete="off" checked data-id={{id}}> <span class="task-name"> {{name}} <span>
+    {{else}}
+      <input class="edit btn" type="checkbox" autocomplete="off" data-id={{id}}> <span class="task-name"> {{name}} <span>
+    {{/if}}
+  </label>
+  <button type="button" class="close task-close" aria-label="Close">
+      <span aria-hidden="true" data-id={{id}}></span>
+  </button>
+</div>

@@ -65,20 +65,16 @@ const onGetJobs = function (event) {
     .catch(ui.onGetJobsFailure)
 }
 
-const onClearJobs = (event) => {
+const onClearJobs = function (event) {
   event.preventDefault()
-  ui.clearJobs()
-}
-
-const clear = function () {
   $('.content').empty()
 }
 
 const displayTasks = function (response) {
-  clear()
+  $('.content').empty()
   console.log(response.jobs)
   const responseJobs = response.jobs
-  const jobListingTemplate = require('../templates/job-listing.handlebars')
+  const jobListingTemplate = require('../templates/job.listing.handlebars')
   $('.content').append(jobListingTemplate({responseJobs}))
 }
 

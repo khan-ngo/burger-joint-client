@@ -67,10 +67,6 @@ const onGetJobsSuccess = (data) => {
   $('.content').append(showJobsHtml)
 }
 
-const clearJobs = () => {
-  $('.content').empty()
-}
-
 const failure = (error) => {
   console.error(error)
 }
@@ -96,7 +92,6 @@ module.exports = {
   onSuccess,
   onSuccessNoContent,
   onError,
-  clearJobs,
   failure,
   getUserTasksSuccess,
   getUserTasksFailure
