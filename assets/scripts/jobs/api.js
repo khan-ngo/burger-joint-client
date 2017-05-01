@@ -10,13 +10,6 @@ const index = function () {
   })
 }
 
-const show = function (id) {
-  return $.ajax({
-    url: app.host + '/jobs/' + id,
-    method: 'GET'
-  })
-}
-
 const destroy = function (id) {
   return $.ajax({
     url: app.host + '/jobs/' + id,
@@ -39,6 +32,13 @@ const createJob = function (data) {
     url: config.apiOrigin + '/jobs',
     method: 'POST',
     data
+  })
+}
+
+const show = function (id) {
+  return $.ajax({
+    url: app.host + '/jobs/' + id,
+    method: 'GET'
   })
 }
 
