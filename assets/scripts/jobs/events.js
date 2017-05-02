@@ -3,7 +3,6 @@
 const getFormFields = require(`../../../lib/get-form-fields`)
 const api = require('./api.js')
 const ui = require('./ui.js')
-const app = require('../app.js')
 const store = require('../store')
 const config = require('../config')
 
