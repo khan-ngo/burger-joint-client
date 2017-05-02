@@ -14,7 +14,7 @@
     <body class="container-fluid">
       <!-- ========= NavBar ============ -->
       <div class="container vav-bar-container">
-        <nav class="navbar navbar-dark bg-inverse">
+        <nav class="navbar navbar-dark bg-inverse col-md-12 col-sm-12 col-xs-12">
 
 
           <div class="nav-btns">
@@ -152,11 +152,7 @@
 <!-- body contain-->
       <!-- ADD TASK modal -->
 
-<div class="task_controls">
-    <button id="add-task-btn" type="button" class="btn btn-primary addTaskBtn" data-toggle="modal" data-target=".bs-example-modal-lg">Add Task</button>
-    <button id="getJobsButton" class="btn btn-primary">Get Tasks</button>
-    <button id="clearJobsButton" class="btn btn-primary">Hide Tasks</button>
-</div>
+
 
     <div id="add-task-modal" class="container-fluid">
       <div id="job-create-modal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
@@ -176,8 +172,7 @@
                   </div>
                   <div class="modal-footer">
                   <button type="submit" name="submit" value="CreateJob" class="btn btn-primary form-button">Create New Job</button>
-                  <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-
+                  <!-- <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button> -->
                 </div>
               </form>
 
@@ -186,13 +181,20 @@
         </div>
       </div>
 </div>
-  <!-- end of ADD TASK modal -->
+
+  <!-- Task Flow -->
+<div class="task-work-flow">
+    <div class="task-buttons">
+      <button id="add-task-btn" type="button" class="btn btn-primary addTaskBtn" data-toggle="modal" data-target=".bs-example-modal-lg">Add Task</button>
+      <button id="getJobsButton" class="btn btn-primary">Get Tasks</button>
+      <button id="clearJobsButton" class="btn btn-primary">Hide Tasks</button>
+  </div>
   <div class="jumbotron jumbotron-fluid beforesignin">
-    <div class="container">
+    <div class="container-fluid">
       <div id="content" class="content"></div>
     </div>
   </div>
-
+</div>
 <!-- START CRUD -->
 <div id="job-crud-container" class="container hidden">
   <h1>Job CRUD</h1>

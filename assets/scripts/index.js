@@ -22,6 +22,5 @@ $(() => {
   jobsEvents.addHandlers()
   $('#signUpModal').hide()
   $('.navbar').hide()
-  $('.task_controls').hide()
-  $('.jumbotron').hide()
+  $('.task-work-flow').hide()
 })
