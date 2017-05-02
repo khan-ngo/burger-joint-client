@@ -1,20 +1,25 @@
 'use strict'
 
 const store = require('../store')
-const app = require('../app.js')
 const config = require('../config')
 
 const index = function () {
   return $.ajax({
     url: config.apiOrigin + '/jobs',
-    method: 'GET'
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
   })
 }
 
 const getJobs = function () {
   return $.ajax({
     url: config.apiOrigin + '/jobs',
-    method: 'GET'
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
   })
 }
 
@@ -35,16 +40,22 @@ const update = function (data) {
   return $.ajax({
     url: config.apiOrigin + '/jobs/' + data.job.id,
     method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
     data
   })
 }
 
 const createJob = function (data) {
   console.log('You made it inside the CreateJob api')
-
+// debugger
   return $.ajax({
     url: config.apiOrigin + '/jobs',
     method: 'POST',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
     data
   })
 }
@@ -52,7 +63,10 @@ const createJob = function (data) {
 const show = function (id) {
   return $.ajax({
     url: config.apiOrigin + '/jobs/' + id,
-    method: 'GET'
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
   })
 }
 

@@ -23,11 +23,6 @@ const onError = function (response) {
   console.error(response)
 }
 
-const onGetJobs = function () {
-  $('.content').empty()
-  console.log('inside onGetJobs')
-  api.getJobs()
-}
 const refreshHandlebar = function () {
   $('.content').empty()
   api.getJobs()
