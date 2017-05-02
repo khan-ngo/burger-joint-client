@@ -62,9 +62,9 @@ const onUpdateJob = function (event) {
 }
 
 const onGetJobs = function () {
+
   event.preventDefault()
   $('.content').empty()
-
   api.getJobs()
     .then(ui.onGetJobsSuccess)
     .catch(ui.onGetJobsFailure)

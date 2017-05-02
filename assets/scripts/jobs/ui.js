@@ -3,7 +3,6 @@
 const showJobsTemplate = require('../templates/job.listing.handlebars')
 const jobsEvents = require('./events.js')
 const api = require('./api.js')
-const ui = require('./ui.js')
 
 const onSuccess = function (data) {
   if (!data) {
@@ -29,7 +28,12 @@ const onGetJobs = function () {
   console.log('inside onGetJobs')
   api.getJobs()
 }
-
+const refreshHandlebar = function () {
+  $('.content').empty()
+  api.getJobs()
+    .then(onGetJobsSuccess)
+    .catch(onGetJobsFailure)
+}
 const onCreateJobSuccess = function (data) {
   // if (!data) {
   //   console.warn('Either you deleted something, or something went wrong.')
@@ -39,13 +43,10 @@ const onCreateJobSuccess = function (data) {
   //   console.table(data.job)
   // }
 
-  $(this).find('form').trigger('reset')
+  $('#job-create-modal-form').trigger('reset')
   $('#job-create-modal').modal('hide')
-  // $('.content').empty()
-  onGetJobs()
-  api.getJobs()
-    .then(ui.onGetJobsSuccess)
-    .catch(ui.onGetJobsFailure)
+
+  refreshHandlebar()
 
   // $('#addTaskMsgSuccess').html('New task Added.')
   // setTimeout(function () {
@@ -59,6 +60,7 @@ const onCreateJobError = function (data) {
   setTimeout(function () {
     $('#addTaskMsgError').fadeOut(1000)
   }, 1000)
+  refreshHandlebar()
 }
 
 const onGetJobsFailure = (error) => {
@@ -73,6 +75,7 @@ const onGetJobFailure = (error) => {
 }
 const onDeleteJobSuccess = function () {
   console.log('onDeleteJobSuccess')
+  refreshHandlebar()
 }
 const onDeleteJobFailure = (error) => {
   console.error('onDeleteJobFailure: ', error)
@@ -90,7 +93,6 @@ const failure = (error) => {
 }
 
 const getUserTasksSuccess = function (data) {
-  // displayTasks(data)
   console.log('getUserTasksSuccess data: ', data)
 }
 
@@ -98,21 +100,21 @@ const getUserTasksFailure = function (error) {
   console.error('getUserTasksFailure: ', error)
 }
 const onDeleteTaskSuccess = function () {
-  jobsEvents.onGetJobs()
+  refreshHandlebar()
 }
 const onDeleteTaskFailure = function (error) {
   console.error('onDeleteTaskFailure: ', error)
-  jobsEvents.onGetJobs()
+  refreshHandlebar()
 }
 
 const markCompleteSuccess = function (error) {
   console.error('markCompleteFailure: ', error)
-  jobsEvents.onGetJobs()
+  refreshHandlebar()
 }
 
 const markCompleteFailure = function (error) {
   console.error('markCompleteFailure: ', error)
-  jobsEvents.onGetJobs()
+  refreshHandlebar()
 }
 
 module.exports = {
