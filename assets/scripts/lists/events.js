@@ -101,7 +101,7 @@ let markComplete = function(e) {
       Authorization: 'Token token=' + myApp.user.token,
     },
     data: {
-      "task":{
+      "job":{
         "completed": check
       }
     }

@@ -5,6 +5,7 @@ const api = require('./api.js')
 const ui = require('./ui.js')
 const app = require('../app.js')
 const store = require('../store')
+const config = require('../config')
 
 const onCreateJob = function (event) {
   event.preventDefault()
@@ -60,7 +61,7 @@ const onUpdateJob = function (event) {
   }
 }
 
-const onGetJobs = function (event) {
+const onGetJobs = function () {
   event.preventDefault()
   $('.content').empty()
 
@@ -74,14 +75,6 @@ const onClearJobs = function (event) {
   $('.content').empty()
 }
 
-const displayTasks = function (response) {
-  $('.content').empty()
-  console.log(response.jobs)
-  const responseJobs = response.jobs
-  const jobListingTemplate = require('../templates/job.listing.handlebars')
-  $('.content').append(jobListingTemplate({responseJobs}))
-}
-
 const deleteTask = function (event) {
   event.preventDefault()
   $.ajax({
@@ -91,34 +84,37 @@ const deleteTask = function (event) {
       Authorization: 'Token token=' + store.user.token
     }
   })
+
   .then(ui.onDeleteTaskSuccess)
   .catch(ui.onDeleteTaskFailure)
 }
 
-const onMarkComplete = function(event) {
+const markComplete = function (event) {
   event.preventDefault()
-  const check = event.target.checked
-  console.log('onMarkComplete: ', check)
+  // if (!current.user) {
+  //   console.error('wrong')
+  // }
+  const checked = event.target.checked
+  console.log(checked)
 
-  // // if (!current.user) {
-  // //   console.error('wrong');
-  // // }
   $.ajax({
-    url: app.host + '/jobs/' + (event.target).getAttribute('data-id'),
+    url: config.apiOrigin + '/jobs/' + (event.target).getAttribute('data-id'),
     method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + store.user.token
     },
     data: {
-      "jobs":{
-        "completed": t
+      'job': {
+        'completed': true
       }
     }
+  }).done(function () {
+    console.log('task edit')
+    onGetJobs()
+  }).fail(function (error) {
+    console.error(error)
+    onGetJobs()
   })
-//
-//   api.markComplete()
-//     .then(ui.markCompleteSuccess)
-//     .catch(ui.markCompleteFailure)
 }
 
 const addHandlers = () => {
@@ -131,7 +127,7 @@ const addHandlers = () => {
   $('#getJobsButton').on('click', onGetJobs)
   $('#clearJobsButton').on('click', onClearJobs)
   $('body').on('click', '.task-close', deleteTask)
-  $('body').on('click', '.edit', onMarkComplete)
+  $('body').on('click', '.edit', markComplete)
 }
 
 module.exports = {

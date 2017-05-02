@@ -1,7 +1,7 @@
 'use strict'
 
 const showJobsTemplate = require('../templates/job.listing.handlebars')
-
+const jobsEvents = require('./events.js')
 const onSuccess = function (data) {
   if (!data) {
     console.warn('Either you deleted something, or something went wrong.')
@@ -10,6 +10,7 @@ const onSuccess = function (data) {
   } else {
     console.table(data.books)
   }
+  jobsEvents.onGetJobs()
 }
 
 const onSuccessNoContent = function () {
@@ -58,6 +59,7 @@ const onGetJobFailure = (error) => {
 }
 const onDeleteJobSuccess = function () {
   console.log('onDeleteJobSuccess')
+  jobsEvents.onGetJobs()
 }
 const onDeleteJobFailure = (error) => {
   console.error('onDeleteJobFailure: ', error)
@@ -83,18 +85,21 @@ const getUserTasksFailure = function (error) {
   console.error('getUserTasksFailure: ', error)
 }
 const onDeleteTaskSuccess = function () {
-  $('.content').empty()
+  jobsEvents.onGetJobs()
 }
 const onDeleteTaskFailure = function (error) {
   console.error('onDeleteTaskFailure: ', error)
+  jobsEvents.onGetJobs()
 }
 
 const markCompleteSuccess = function (error) {
   console.error('markCompleteFailure: ', error)
+  jobsEvents.onGetJobs()
 }
 
 const markCompleteFailure = function (error) {
   console.error('markCompleteFailure: ', error)
+  jobsEvents.onGetJobs()
 }
 
 module.exports = {

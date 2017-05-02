@@ -1,6 +1,7 @@
 'use strict'
 
 const store = require('../store.js')
+const jobsEvents = require('./events.js')
 
 const signUpSuccess = (data) => {
   $('#signUpModal').hide()
