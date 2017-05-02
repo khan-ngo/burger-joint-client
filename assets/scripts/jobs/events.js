@@ -5,9 +5,11 @@ const api = require('./api.js')
 const ui = require('./ui.js')
 const app = require('../app.js')
 const store = require('../store')
+const config = require('../config')
 
 const onCreateJob = function (event) {
   event.preventDefault()
+
   const data = getFormFields(event.target)
   console.log('Your inside onCreate Job. eventtaget is : ', data)
 
@@ -19,7 +21,7 @@ const onCreateJob = function (event) {
 const onGetJob = function (event) {
   event.preventDefault()
   const job = getFormFields(event.target).job
-  console.log('onGetJob data: ', job.id)
+  // console.log('onGetJob data: ', job.id)
 
   if (job.id.length !== 0) {
     api.show(job.id)
@@ -59,8 +61,9 @@ const onUpdateJob = function (event) {
   }
 }
 
-const onGetJobs = function (event) {
+const onGetJobs = function () {
   event.preventDefault()
+  $('.content').empty()
 
   api.getJobs()
     .then(ui.onGetJobsSuccess)
@@ -72,23 +75,45 @@ const onClearJobs = function (event) {
   $('.content').empty()
 }
 
-const displayTasks = function (response) {
-  $('.content').empty()
-  console.log(response.jobs)
-  const responseJobs = response.jobs
-  const jobListingTemplate = require('../templates/job.listing.handlebars')
-  $('.content').append(jobListingTemplate({responseJobs}))
-}
-
 const deleteTask = function (event) {
   event.preventDefault()
-console.log(this)
   $.ajax({
-    url: app.host + '/jobs/' + (event.target).getAttribute('id'),
+    url: app.host + '/jobs/' + (event.target).getAttribute('data-id'),
     method: 'DELETE',
     headers: {
       Authorization: 'Token token=' + store.user.token
     }
+  })
+
+  .then(ui.onDeleteTaskSuccess)
+  .catch(ui.onDeleteTaskFailure)
+}
+
+const markComplete = function (event) {
+  event.preventDefault()
+  // if (!current.user) {
+  //   console.error('wrong')
+  // }
+  const checked = event.target.checked
+  console.log(checked)
+
+  $.ajax({
+    url: config.apiOrigin + '/jobs/' + (event.target).getAttribute('data-id'),
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: {
+      'job': {
+        'completed': true
+      }
+    }
+  }).done(function () {
+    console.log('task edit')
+    onGetJobs()
+  }).fail(function (error) {
+    console.error(error)
+    onGetJobs()
   })
 }
 
@@ -102,8 +127,10 @@ const addHandlers = () => {
   $('#getJobsButton').on('click', onGetJobs)
   $('#clearJobsButton').on('click', onClearJobs)
   $('body').on('click', '.task-close', deleteTask)
+  $('body').on('click', '.edit', markComplete)
 }
 
 module.exports = {
-  addHandlers
+  addHandlers,
+  onGetJobs
 }

@@ -4,23 +4,15 @@
 
           <label data-id={{job.id}}>
             {{#if completed}}
-              <input class="edit btn" type="checkbox" autocomplete="off" checked data-id={{job.id}}> <span class="task-name"> {{task}} <span>
+              <input class="edit btn" type="checkbox" autocomplete="off" checked data-id={{job.id}}> <span style='color:black;text-decoration:line-through' class="task-name"> {{task}} <span>
             {{else}}
               <input class="edit btn" type="checkbox" autocomplete="off" data-id={{job.id}}> <span class="task-name"> {{task}} <span>
             {{/if}}
           </label>
 
           <button type="submit" class="close task-close" aria-label="Close">
-          <span aria-hidden="true" name="job[id]" id={{id}}>
+          <span aria-hidden="true" name="job[id]" data-id={{id}}>
             &times; </span>
           </button>
-
-          <!-- <form class='jobs' id='job-delete'>
-            <div class="form-group">
-              <input type="text" name="job[id]" id="job-id-delete" placeholder="Resource ID Here">
-            </div>
-            <button type="submit" class="btn btn-default">Delete Task</button>
-          </form> -->
-
         </div>
 {{/each}}

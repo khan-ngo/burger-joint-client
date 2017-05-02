@@ -10,7 +10,9 @@ $dark-green: #3c763d;
 .edit {
   box-sizing: border-box;
 }
-
+.completed {
+  color: red;
+}
 .modal-header {
   background-color: $light-gray;
   border-color: $light-gray;

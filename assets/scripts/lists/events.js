@@ -85,6 +85,7 @@ let deleteTask = function(e) {
     console.error(jqxhr);
   });
 };
+
 //mark complete
 let markComplete = function(e) {
   e.preventDefault();
@@ -100,7 +101,7 @@ let markComplete = function(e) {
       Authorization: 'Token token=' + myApp.user.token,
     },
     data: {
-      "task":{
+      "job":{
         "completed": check
       }
     }

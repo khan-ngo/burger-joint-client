@@ -1,6 +1,7 @@
 'use strict'
 
 const store = require('../store.js')
+const jobsEvents = require('./events.js')
 
 const signUpSuccess = (data) => {
   $('#signUpModal').hide()
@@ -23,9 +24,10 @@ const signInSuccess = (data) => {
   store.user = data.user
   console.log(store.user)
 
-  $('#add-task-btn').show()
   $('.navbar').show()
   $('.nav-btns').show()
+  $('.task_controls').show()
+  $('.jumbotron').show()
 
   $('#signUpModal').hide()
   $('.header-message').hide()
