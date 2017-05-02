@@ -21,14 +21,17 @@ const onError = function (response) {
 }
 
 const onCreateJobSuccess = function (data) {
-  if (!data) {
-    console.warn('Either you deleted something, or something went wrong.')
-  } else if (data.job) {
-    console.log(data.job)
-  } else {
-    console.table(data.job)
-  }
-  $('#job-create-modal-form').trigger('reset')
+  // if (!data) {
+  //   console.warn('Either you deleted something, or something went wrong.')
+  // } else if (data.job) {
+  //   console.log(data.job)
+  // } else {
+  //   console.table(data.job)
+  // }
+
+  $(this).find('form').trigger('reset')
+  $('#job-create-modal').modal('hide')
+
   $('#addTaskMsgSuccess').html('New task Added.')
   setTimeout(function () {
     $('#addTaskMsgSuccess').fadeOut(800)
@@ -68,7 +71,7 @@ const onGetJobsSuccess = (data) => {
 }
 
 const failure = (error) => {
-  console.error(error)
+  console.error('failure: ', error)
 }
 
 const getUserTasksSuccess = function (data) {
@@ -78,6 +81,20 @@ const getUserTasksSuccess = function (data) {
 
 const getUserTasksFailure = function (error) {
   console.error('getUserTasksFailure: ', error)
+}
+const onDeleteTaskSuccess = function () {
+  $('.content').empty()
+}
+const onDeleteTaskFailure = function (error) {
+  console.error('onDeleteTaskFailure: ', error)
+}
+
+const markCompleteSuccess = function (error) {
+  console.error('markCompleteFailure: ', error)
+}
+
+const markCompleteFailure = function (error) {
+  console.error('markCompleteFailure: ', error)
 }
 
 module.exports = {
@@ -94,5 +111,9 @@ module.exports = {
   onError,
   failure,
   getUserTasksSuccess,
-  getUserTasksFailure
+  getUserTasksFailure,
+  onDeleteTaskSuccess,
+  onDeleteTaskFailure,
+  markCompleteSuccess,
+  markCompleteFailure
 }

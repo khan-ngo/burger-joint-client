@@ -8,6 +8,7 @@ const store = require('../store')
 
 const onCreateJob = function (event) {
   event.preventDefault()
+
   const data = getFormFields(event.target)
   console.log('Your inside onCreate Job. eventtaget is : ', data)
 
@@ -19,7 +20,7 @@ const onCreateJob = function (event) {
 const onGetJob = function (event) {
   event.preventDefault()
   const job = getFormFields(event.target).job
-  console.log('onGetJob data: ', job.id)
+  // console.log('onGetJob data: ', job.id)
 
   if (job.id.length !== 0) {
     api.show(job.id)
@@ -61,6 +62,7 @@ const onUpdateJob = function (event) {
 
 const onGetJobs = function (event) {
   event.preventDefault()
+  $('.content').empty()
 
   api.getJobs()
     .then(ui.onGetJobsSuccess)
@@ -82,14 +84,41 @@ const displayTasks = function (response) {
 
 const deleteTask = function (event) {
   event.preventDefault()
-console.log(this)
   $.ajax({
-    url: app.host + '/jobs/' + (event.target).getAttribute('id'),
+    url: app.host + '/jobs/' + (event.target).getAttribute('data-id'),
     method: 'DELETE',
     headers: {
       Authorization: 'Token token=' + store.user.token
     }
   })
+  .then(ui.onDeleteTaskSuccess)
+  .catch(ui.onDeleteTaskFailure)
+}
+
+const onMarkComplete = function(event) {
+  event.preventDefault()
+  const check = event.target.checked
+  console.log('onMarkComplete: ', check)
+
+  // // if (!current.user) {
+  // //   console.error('wrong');
+  // // }
+  $.ajax({
+    url: app.host + '/jobs/' + (event.target).getAttribute('data-id'),
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: {
+      "jobs":{
+        "completed": t
+      }
+    }
+  })
+//
+//   api.markComplete()
+//     .then(ui.markCompleteSuccess)
+//     .catch(ui.markCompleteFailure)
 }
 
 const addHandlers = () => {
@@ -102,8 +131,10 @@ const addHandlers = () => {
   $('#getJobsButton').on('click', onGetJobs)
   $('#clearJobsButton').on('click', onClearJobs)
   $('body').on('click', '.task-close', deleteTask)
+  $('body').on('click', '.edit', onMarkComplete)
 }
 
 module.exports = {
-  addHandlers
+  addHandlers,
+  onGetJobs
 }

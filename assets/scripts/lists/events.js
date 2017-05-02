@@ -85,6 +85,7 @@ let deleteTask = function(e) {
     console.error(jqxhr);
   });
 };
+
 //mark complete
 let markComplete = function(e) {
   e.preventDefault();

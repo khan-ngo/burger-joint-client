@@ -66,6 +66,24 @@ const destroy = function (id) {
   })
 }
 
+const markComplete = function () {
+  // if (!current.user) {
+  //   console.error('wrong');
+  // }
+  $.ajax({
+    url: app.host + '/jobs/' + $(event.target).getAttribute('data-id'),
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: {
+      "task":{
+        "completed": check
+      }
+    }
+  })
+}
+
 module.exports = {
   createJob,
   index,
