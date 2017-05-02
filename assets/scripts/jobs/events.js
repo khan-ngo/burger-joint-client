@@ -78,7 +78,7 @@ const onClearJobs = function (event) {
 const deleteTask = function (event) {
   event.preventDefault()
   $.ajax({
-    url: app.host + '/jobs/' + (event.target).getAttribute('data-id'),
+    url: config.apiOrigin + '/jobs/' + (event.target).getAttribute('data-id'),
     method: 'DELETE',
     headers: {
       Authorization: 'Token token=' + store.user.token

@@ -6,15 +6,26 @@ const config = require('../config')
 
 const index = function () {
   return $.ajax({
-    url: app.host + '/jobs',
+    url: config.apiOrigin + '/jobs',
     method: 'GET'
   })
 }
 
 const getJobs = function () {
   return $.ajax({
-    url: app.host + '/jobs',
+    url: config.apiOrigin + '/jobs',
     method: 'GET'
+  })
+}
+
+const getUserTasks = function () {
+  return $.ajax({
+    url: config.apiOrigin + '/jobs',
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    dataType: 'json'
   })
 }
 
@@ -22,7 +33,7 @@ const update = function (data) {
   console.log('You made it inside the update api')
 
   return $.ajax({
-    url: app.host + '/jobs/' + data.job.id,
+    url: config.apiOrigin + '/jobs/' + data.job.id,
     method: 'PATCH',
     data
   })
@@ -40,25 +51,14 @@ const createJob = function (data) {
 
 const show = function (id) {
   return $.ajax({
-    url: app.host + '/jobs/' + id,
+    url: config.apiOrigin + '/jobs/' + id,
     method: 'GET'
-  })
-}
-
-const getUserTasks = function () {
-  return $.ajax({
-    url: config.apiOrigin + '/jobs',
-    method: 'GET',
-    headers: {
-      Authorization: 'Token token=' + store.user.token
-    },
-    dataType: 'json'
   })
 }
 
 const destroy = function (id) {
   return $.ajax({
-    url: app.host + '/jobs/' + id,
+    url: config.apiOrigin + '/jobs/' + id,
     method: 'DELETE',
     headers: {
       Authorization: 'Token token=' + store.user.token

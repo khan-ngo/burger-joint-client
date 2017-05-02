@@ -2,6 +2,9 @@
 
 const showJobsTemplate = require('../templates/job.listing.handlebars')
 const jobsEvents = require('./events.js')
+const api = require('./api.js')
+const ui = require('./ui.js')
+
 const onSuccess = function (data) {
   if (!data) {
     console.warn('Either you deleted something, or something went wrong.')
@@ -21,6 +24,12 @@ const onError = function (response) {
   console.error(response)
 }
 
+const onGetJobs = function () {
+  $('.content').empty()
+  console.log('inside onGetJobs')
+  api.getJobs()
+}
+
 const onCreateJobSuccess = function (data) {
   // if (!data) {
   //   console.warn('Either you deleted something, or something went wrong.')
@@ -32,11 +41,16 @@ const onCreateJobSuccess = function (data) {
 
   $(this).find('form').trigger('reset')
   $('#job-create-modal').modal('hide')
+  // $('.content').empty()
+  onGetJobs()
+  api.getJobs()
+    .then(ui.onGetJobsSuccess)
+    .catch(ui.onGetJobsFailure)
 
-  $('#addTaskMsgSuccess').html('New task Added.')
-  setTimeout(function () {
-    $('#addTaskMsgSuccess').fadeOut(800)
-  }, 1000)
+  // $('#addTaskMsgSuccess').html('New task Added.')
+  // setTimeout(function () {
+  //   $('#addTaskMsgSuccess').fadeOut(800)
+  // }, 1000)
 }
 
 const onCreateJobError = function (data) {
@@ -59,7 +73,6 @@ const onGetJobFailure = (error) => {
 }
 const onDeleteJobSuccess = function () {
   console.log('onDeleteJobSuccess')
-  jobsEvents.onGetJobs()
 }
 const onDeleteJobFailure = (error) => {
   console.error('onDeleteJobFailure: ', error)
