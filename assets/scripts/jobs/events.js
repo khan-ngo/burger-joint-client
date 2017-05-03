@@ -8,10 +8,7 @@ const config = require('../config')
 
 const onCreateJob = function (event) {
   event.preventDefault()
-
   const data = getFormFields(event.target)
-  console.log('Your inside onCreate Job. eventtaget is : ', data)
-
   api.createJob(data)
   .then(ui.onCreateJobSuccess)
   .catch(ui.onCreateJobError)
@@ -20,48 +17,28 @@ const onCreateJob = function (event) {
 const onGetJob = function (event) {
   event.preventDefault()
   const job = getFormFields(event.target).job
-  // console.log('onGetJob data: ', job.id)
-
-  if (job.id.length !== 0) {
-    api.show(job.id)
+  api.show(job.id)
     .then(ui.onGetJobSuccess)
     .catch(ui.onGetJobFailure)
-  } else {
-    console.log('Please provide a job id!')
-  }
 }
 
 const onDeleteJob = function (event) {
   event.preventDefault()
   const job = getFormFields(event.target).job
-
-  if (job.id.length !== 0) {
-    api.destroy(job.id)
+  api.destroy(job.id)
     .then(ui.onDeleteJobSuccess)
     .catch(ui.onDeleteJobFailure)
-  } else {
-    console.log('Please provide a job id!')
-  }
 }
 
 const onUpdateJob = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
-  const job = data.job
-  console.log('You are inside onUpdateJob Function.')
-  console.log('event.target: ', event.target)
-
-  if (job.id.length !== 0) {
-    api.update(data)
+  api.update(data)
     .then(ui.onUpdateSuccess)
     .catch(ui.onUpdateJobFailure)
-  } else {
-    console.log('Please provide ID to update job data!')
-  }
 }
 
 const onGetJobs = function () {
-
   event.preventDefault()
   $('.content').empty()
   api.getJobs()
@@ -83,18 +60,14 @@ const deleteTask = function (event) {
       Authorization: 'Token token=' + store.user.token
     }
   })
-
   .then(ui.onDeleteTaskSuccess)
   .catch(ui.onDeleteTaskFailure)
 }
 
 const markComplete = function (event) {
   event.preventDefault()
-  // if (!current.user) {
-  //   console.error('wrong')
-  // }
-  const checked = event.target.checked
-  console.log(checked)
+  // const checked = event.target.checked
+  // console.log(checked)
 
   $.ajax({
     url: config.apiOrigin + '/jobs/' + (event.target).getAttribute('data-id'),
@@ -108,7 +81,6 @@ const markComplete = function (event) {
       }
     }
   }).done(function () {
-    console.log('task edit')
     onGetJobs()
   }).fail(function (error) {
     console.error(error)

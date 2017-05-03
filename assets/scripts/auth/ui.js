@@ -13,7 +13,7 @@ const signUpSuccess = (data) => {
 const signUpFailure = (error) => {
   $('#signUpError').show().html('Something\'s wrong. Try again.')
   setTimeout(function () {
-    $('#signUpError').fadeOut(700)
+    $('#signUpError').fadeOut(900)
   }, 1000)
   $('#sign-up').trigger('reset')
   console.error('signIn failed ran data is:', error)
@@ -21,7 +21,7 @@ const signUpFailure = (error) => {
 
 const signInSuccess = (data) => {
   store.user = data.user
-  console.log(store.user)
+  // console.log(store.user)
 
   $('.navbar').show()
   $('.nav-btns').show()
@@ -30,8 +30,9 @@ const signInSuccess = (data) => {
   $('#signUpModal').hide()
   $('.header-message').hide()
   $('#signInModal').hide()
-  $('#salutaion-message').html('ToDo List')
-  $('.nav-message').html('User: ', store.user.email)
+  $('#salutaion-message').html('My To-Do')
+  $('.nav-message').hide()
+  // $('.nav-message').html(store.user.email)
   $('#ChangePasswordSuccess').hide()
   $('#change-password').trigger('reset')
 }

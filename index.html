@@ -11,28 +11,8 @@
       <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
-    <body class="container-fluid">
-      <!-- ========= NavBar ============ -->
-      <div class="container vav-bar-container">
-        <nav class="navbar navbar-dark bg-inverse col-md-12 col-sm-12 col-xs-12">
+    <body class="container">
 
-
-          <div class="nav-btns">
-            <button id="sign-out" type="submit"  name="submit" value="SignOut" class="btn btn-primary btn-sm align-center navbar-center">SignOut</button>
-
-            <button id="change-password-modal" type="button" class="btn btn-primary btn-sm navbar-center change-pw" data-toggle="modal" data-target="#changePasswordModal">Changing Password</button>
-
-            <!-- <span id="nav-message" class="navbar-center">Tic-Tac-Toe</span> -->
-
-              <span id="nav-message" class="nav-message navbar-right"></span>
-          </div>
-        </nav>
-      </div>
-
-      <!-- ========= END NavBar ============ -->
-
-      <div id="Game-message">
-        <div>
           <h1 id="salutaion-message" class="title_message">Welcome</h1>
         </div>
         <div id="header-message">
@@ -56,9 +36,9 @@
         <form id="sign-in">
           <div class="form-group blue-text">
             <label for="name">Email</label>
-            <input type="text" name="credentials[email]" class="form-control" value="" placeholder="Email">
+            <input type="text" name="credentials[email]" class="form-control" value="" placeholder="Email" required="required" />
            <label for="name">Password</label>
-           <input type="password" name="credentials[password]" class="form-control" value="" placeholder="Password">
+           <input type="password" name="credentials[password]" class="form-control" value="" placeholder="Password" require="required" />
          </div>
          <div class="padding">
           <button type="submit" name="submit" value="SignIn" class="btn btn-primary form-button">submit</button>
@@ -89,15 +69,12 @@
               <div class="modal-body">
                  <form id="sign-up">
                    <div class="form-group blue-text">
-                       <!-- <label for="name">Username</label>
-                       <input type="text" name="credentials[username]" class="form-control" value="" placeholder="Username"> -->
-
                     <label for="name">Email</label>
-                    <input type="text" name="credentials[email]" class="form-control" value="" placeholder="Email">
+                    <input type="text" name="credentials[email]" class="form-control" value="" placeholder="Email" required />
                     <label for="name">Password</label>
-                    <input type="password" name="credentials[password]" class="form-control" value="" placeholder="Password">
+                    <input type="password" name="credentials[password]" class="form-control" value="" placeholder="Password" required />
                     <label for="name">Password Confirmation</label>
-                    <input type="password" name="credentials[password_confirmation]" class="form-control" value="" placeholder="Confirm Password">
+                    <input type="password" name="credentials[password_confirmation]" class="form-control" value="" placeholder="Confirm Password" required />
                    </div>
                    <button type="submit" name="submit" value="SignUp" class="btn btn-primary form-button">submit</button>
                    <div class="modal-footer"></div>
@@ -132,9 +109,9 @@
             <fieldset>
               <div class="form-group-pw blue-text">
                <label for="name">Old Password</label>
-               <input type="password" name="passwords[old]" class="form-control" value="" placeholder="Old Password">
+               <input type="password" name="passwords[old]" class="form-control" value="" placeholder="Old Password" required />
                <label for="name">New Password</label>
-               <input type="password" name="passwords[new]" class="form-control" value="" placeholder="New Password">
+               <input type="password" name="passwords[new]" class="form-control" value="" placeholder="New Password" required />
 
                <div class="padding"></div>
               <button id="changePasswordSubmit" type="submit" name="submit" value="Change Password" class="btn btn-primary">submit</button>
@@ -151,9 +128,6 @@
 
 <!-- body contain-->
       <!-- ADD TASK modal -->
-
-
-
     <div id="add-task-modal" class="container-fluid">
       <div id="job-create-modal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
         <div class="modal-dialog modal-lg">
@@ -168,7 +142,7 @@
               <h4 id="addTaskMsgSuccess" class="form-success"></h4>
 
               <form id="job-create-modal-form">
-                  <input type="text" name="job[task]" class="form-control CreateJob" value="" placeholder="Add New Task Here ... ">
+                  <input type="text" name="job[task]" class="form-control CreateJob required" value="" placeholder="Add New Task Here ... " maxlength="40" required/>
                   </div>
                   <div class="modal-footer">
                   <button type="submit" name="submit" value="CreateJob" class="btn btn-primary form-button">Create New Job</button>
@@ -184,9 +158,9 @@
 
   <!-- Task Flow -->
 <div class="task-work-flow">
-    <div class="task-buttons">
+    <div class="task-buttons align-center">
       <button id="add-task-btn" type="button" class="btn btn-primary addTaskBtn" data-toggle="modal" data-target=".bs-example-modal-lg">Add Task</button>
-      <button id="getJobsButton" class="btn btn-primary">Get Tasks</button>
+      <button id="getJobsButton" class="btn btn-primary">Get My Tasks</button>
       <button id="clearJobsButton" class="btn btn-primary">Hide Tasks</button>
   </div>
   <div class="jumbotron jumbotron-fluid beforesignin">
@@ -194,52 +168,11 @@
       <div id="content" class="content"></div>
     </div>
   </div>
+      <div class="nav-btns align-center">
+        <button id="sign-out" type="submit"  name="submit" value="SignOut" class="btn btn-primary align-center navbar-center">SignOut</button>
+        <button id="change-password-modal" type="button" class="btn btn-primary  navbar-center change-pw" data-toggle="modal" data-target="#changePasswordModal">Changing Password</button>
+      </div>
 </div>
-<!-- START CRUD -->
-<div id="job-crud-container" class="container hidden">
-  <h1>Job CRUD</h1>
-  <h2>Create Job</h2>
-  <form class='jobs' id='job-create'>
-    <div class="form-group">
-      <input type="text" name="job[task]" class="form-control" value="" placeholder="New Job">
-    </div>
-    <button type="submit" name="submit" value="CreateJob" class="btn btn-primary form-button">Create New Job</button>
-  </form>
-
-  <h2>Get All Tasks</h2>
-  <form class='jobs' id='jobs-search'>
-    <div class="form-group">
-    </div>
-    <button type="submit" class="btn btn-default">Get All Tasks</button>
-  </form>
-
-  <h2>Get Job by ID</h2>
-  <form class='jobs' id='job-search'>
-    <div class="form-group">
-      <input type="text" name="job[id]" id="job-id" placeholder="Resource ID Here">
-    </div>
-    <button type="submit" class="btn btn-default">Get Task</button>
-  </form>
-
-  <h2>Delete Job</h2>
-  <form class='jobs' id='job-delete'>
-    <div class="form-group">
-      <!-- <input type="text" name="job[id]" id="job-id-delete" placeholder="Resource ID Here"> -->
-      <input type="text" name="job[id]" id="job-id-delete" placeholder="Resource ID Here">
-    </div>
-    <button type="submit" class="btn btn-default">Delete Task</button>
-  </form>
-
-  <h2>Update Job</h2>
-  <form class='jobs' id='job-update'>
-    <div class="form-group">
-      <input type="text" name="job[id]" id="job-id-update" placeholder="Resource ID Here">
-      <input type="text" name="job[task]" id="job-task-update" placeholder="Resource task Here">
-    </div>
-    <button type="submit" class="btn btn-default">Update Task</button>
-  </form>
-</div>
-<!-- END CRUD -->
 
     </body>
 </html>
