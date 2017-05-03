@@ -35,8 +35,6 @@ const getUserTasks = function () {
 }
 
 const update = function (data) {
-  console.log('You made it inside the update api')
-
   return $.ajax({
     url: config.apiOrigin + '/jobs/' + data.job.id,
     method: 'PATCH',
@@ -48,8 +46,6 @@ const update = function (data) {
 }
 
 const createJob = function (data) {
-  console.log('You made it inside the CreateJob api')
-// debugger
   return $.ajax({
     url: config.apiOrigin + '/jobs',
     method: 'POST',

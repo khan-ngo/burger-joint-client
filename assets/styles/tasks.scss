@@ -13,6 +13,10 @@ $dark-green: #3c763d;
 .completed {
   color: red;
 }
+
+.task-buttons{
+  padding-bottom: 15px;
+}
 .modal-header {
   background-color: $light-gray;
   border-color: $light-gray;
@@ -23,11 +27,12 @@ $dark-green: #3c763d;
 }
 
 .jumbotron {
+  padding-top: 15px;
   color: $dark-green;
 }
 
 .task-name {
-  font-size: 16px;
-  margin-left: 1em;
+  font-size: 17px;
+  margin-left: 5px;
   padding: 5px;
 }
