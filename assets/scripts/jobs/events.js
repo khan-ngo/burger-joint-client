@@ -3,42 +3,31 @@
 const getFormFields = require(`../../../lib/get-form-fields`)
 const api = require('./api.js')
 const ui = require('./ui.js')
-const store = require('../store')
-const config = require('../config')
 
 const onCreateJob = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
   api.createJob(data)
   .then(ui.onCreateJobSuccess)
-  .catch(ui.onCreateJobError)
+  .catch(ui.onCreateJobFailure)
 }
 
 const onGetJob = function (event) {
   event.preventDefault()
   const job = getFormFields(event.target).job
-  api.show(job.id)
+  api.getJob(job.id)
     .then(ui.onGetJobSuccess)
     .catch(ui.onGetJobFailure)
 }
 
-const onDeleteJob = function (event) {
-  event.preventDefault()
-  const job = getFormFields(event.target).job
-  api.destroy(job.id)
-    .then(ui.onDeleteJobSuccess)
-    .catch(ui.onDeleteJobFailure)
+const getJobs = function () {
+  $('.content').empty()
+  api.getJobs()
+    .then(ui.onGetJobsSuccess)
+    .catch(ui.onGetJobsFailure)
 }
 
-const onUpdateJob = function (event) {
-  event.preventDefault()
-  const data = getFormFields(event.target)
-  api.update(data)
-    .then(ui.onUpdateSuccess)
-    .catch(ui.onUpdateJobFailure)
-}
-
-const onGetJobs = function () {
+const onGetJobs = function (event) {
   event.preventDefault()
   $('.content').empty()
   api.getJobs()
@@ -46,46 +35,33 @@ const onGetJobs = function () {
     .catch(ui.onGetJobsFailure)
 }
 
+const onUpdateJob = function (event) {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  api.updateJob(data)
+    .then(ui.onUpdateSuccess)
+    .catch(ui.onUpdateJobFailure)
+}
+
 const onClearJobs = function (event) {
   event.preventDefault()
   $('.content').empty()
 }
 
-const deleteTask = function (event) {
+const onDeleteJob = function (event) {
   event.preventDefault()
-  $.ajax({
-    url: config.apiOrigin + '/jobs/' + (event.target).getAttribute('data-id'),
-    method: 'DELETE',
-    headers: {
-      Authorization: 'Token token=' + store.user.token
-    }
-  })
-  .then(ui.onDeleteTaskSuccess)
-  .catch(ui.onDeleteTaskFailure)
+  const id = (event.target).getAttribute('data-id')
+  api.deleteJob(id)
+  .then(ui.onDeleteJobSuccess)
+  .catch(ui.onDeleteJobFailure)
 }
 
-const markComplete = function (event) {
+const onMarkComplete = function (event) {
   event.preventDefault()
-  // const checked = event.target.checked
-  // console.log(checked)
-
-  $.ajax({
-    url: config.apiOrigin + '/jobs/' + (event.target).getAttribute('data-id'),
-    method: 'PATCH',
-    headers: {
-      Authorization: 'Token token=' + store.user.token
-    },
-    data: {
-      'job': {
-        'completed': true
-      }
-    }
-  }).done(function () {
-    onGetJobs()
-  }).fail(function (error) {
-    console.error(error)
-    onGetJobs()
-  })
+  const id = (event.target).getAttribute('data-id')
+  api.markComplete(id)
+  .then(ui.onMarkCompleteSuccess)
+  .catch(ui.onMarkCompleteFailure)
 }
 
 const addHandlers = () => {
@@ -97,11 +73,11 @@ const addHandlers = () => {
   $('#job-create-modal').on('submit', onCreateJob)
   $('#getJobsButton').on('click', onGetJobs)
   $('#clearJobsButton').on('click', onClearJobs)
-  $('body').on('click', '.task-close', deleteTask)
-  $('body').on('click', '.edit', markComplete)
+  $('body').on('click', '.delete-job-button', onDeleteJob)
+  $('body').on('click', '.edit', onMarkComplete)
 }
 
 module.exports = {
   addHandlers,
-  onGetJobs
+  getJobs
 }
