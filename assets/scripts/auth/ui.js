@@ -1,6 +1,7 @@
 'use strict'
 
 const store = require('../store.js')
+const jobsEvents = require('../jobs/events.js')
 
 const signUpSuccess = (data) => {
   $('#signUpModal').hide()
@@ -22,17 +23,16 @@ const signUpFailure = (error) => {
 const signInSuccess = (data) => {
   store.user = data.user
   // console.log(store.user)
+  jobsEvents.getJobs()
 
   $('.navbar').show()
   $('.nav-btns').show()
   $('.task-work-flow').show()
-
   $('#signUpModal').hide()
   $('.header-message').hide()
   $('#signInModal').hide()
   $('#salutaion-message').html('My To-Do')
   $('.nav-message').hide()
-  // $('.nav-message').html(store.user.email)
   $('#ChangePasswordSuccess').hide()
   $('#change-password').trigger('reset')
 }

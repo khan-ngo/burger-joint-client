@@ -34,6 +34,19 @@ As a user, I want to delete my task.
 | PATCH  | `/change-password/:id` | `users#changepw`  |
 | DELETE | `/sign-out/:id`        | `users#signout`   |
 
+### SQL CRUD
+
+**[CRUD](http://en.wikipedia.org/wiki/Create,_read,_update_and_delete)**
+_(create, read, update and delete)_, SQL, HTTP, and Rails Controller action.
+
+| CRUD   | SQL    | HTTP   | action     |
+|:-------|:-------|:-------|:-----------|
+| Create | INSERT | POST   | create     |
+| Read   | SELECT | GET    | index/show |
+| Update | UPDATE | PATCH  | update     |
+| Delete | DELETE | DELETE | destroy    |
+
+
 # browser-template
 
 I used a template for starting this front-end project. The template, downloaded from [Download], includes the following:

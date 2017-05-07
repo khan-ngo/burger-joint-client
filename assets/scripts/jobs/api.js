@@ -3,9 +3,20 @@
 const store = require('../store')
 const config = require('../config')
 
-const index = function () {
+const createJob = function (data) {
   return $.ajax({
     url: config.apiOrigin + '/jobs',
+    method: 'POST',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data
+  })
+}
+
+const getJob = function (id) {
+  return $.ajax({
+    url: config.apiOrigin + '/jobs/' + id,
     method: 'GET',
     headers: {
       Authorization: 'Token token=' + store.user.token
@@ -23,18 +34,7 @@ const getJobs = function () {
   })
 }
 
-const getUserTasks = function () {
-  return $.ajax({
-    url: config.apiOrigin + '/jobs',
-    method: 'GET',
-    headers: {
-      Authorization: 'Token token=' + store.user.token
-    },
-    dataType: 'json'
-  })
-}
-
-const update = function (data) {
+const updateJob = function (data) {
   return $.ajax({
     url: config.apiOrigin + '/jobs/' + data.job.id,
     method: 'PATCH',
@@ -42,27 +42,6 @@ const update = function (data) {
       Authorization: 'Token token=' + store.user.token
     },
     data
-  })
-}
-
-const createJob = function (data) {
-  return $.ajax({
-    url: config.apiOrigin + '/jobs',
-    method: 'POST',
-    headers: {
-      Authorization: 'Token token=' + store.user.token
-    },
-    data
-  })
-}
-
-const show = function (id) {
-  return $.ajax({
-    url: config.apiOrigin + '/jobs/' + id,
-    method: 'GET',
-    headers: {
-      Authorization: 'Token token=' + store.user.token
-    }
   })
 }
 
@@ -76,12 +55,37 @@ const destroy = function (id) {
   })
 }
 
+const deleteJob = function (id) {
+  return $.ajax({
+    url: config.apiOrigin + '/jobs/' + id,
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
+const markComplete = function (id) {
+  return $.ajax({
+    url: config.apiOrigin + '/jobs/' + id,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: {
+      'job': {
+        'completed': true
+      }
+    }
+  })
+}
+
 module.exports = {
   createJob,
-  index,
+  getJob,
   getJobs,
-  show,
-  destroy,
-  update,
-  getUserTasks
+  updateJob,
+  deleteJob,
+  markComplete,
+  destroy
 }
