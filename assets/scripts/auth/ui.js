@@ -31,7 +31,7 @@ const signInSuccess = (data) => {
   $('#signUpModal').hide()
   $('.header-message').hide()
   $('#signInModal').hide()
-  $('#salutaion-message').html('My To-Do')
+  $('#salutaion-message').html('To-Do List')
   $('.nav-message').hide()
   $('#ChangePasswordSuccess').hide()
   $('#change-password').trigger('reset')
@@ -48,12 +48,10 @@ const signInFailure = (error) => {
 
 const signOutSuccess = () => {
   store.user = null
+  $('#confirm-logout').modal('hide')
   $('.nav-btns').hide()
   $('.task-work-flow').hide()
 
-  $('#salutaion-message').show()
-  $('#salutaion-message').html('Good-Bye')
-  $('.header-message').show().html('Thank you for Visting. Come back soon.')
   $('#signUpModal').hide()
   $('#signInModal').show()
   $('#signUpModal').trigger('reset')
@@ -68,10 +66,8 @@ const signOutFailure = (error) => {
 const changePasswordSuccess = () => {
   $('#ChangePasswordError').hide()
   $('#ChangePasswordSuccess').show().html('Password changed! Close Modal to continue.')
-  setTimeout(function () {
-    $('#ChangePasswordSuccess').fadeOut(2000)
-  }, 2000)
   $('#change-password').trigger('reset')
+  $('.form-group-pw').hide()
 }
 
 const changePasswordFailure = (error) => {

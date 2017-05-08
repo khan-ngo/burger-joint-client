@@ -43,10 +43,10 @@ const onUpdateJob = function (event) {
     .catch(ui.onUpdateJobFailure)
 }
 
-const onClearJobs = function (event) {
-  event.preventDefault()
-  $('.content').empty()
-}
+// const onClearJobs = function (event) {
+//   event.preventDefault()
+//   $('.content').empty()
+// }
 
 const onDeleteJob = function (event) {
   event.preventDefault()
@@ -71,8 +71,6 @@ const addHandlers = () => {
   $('#job-delete').on('submit', onDeleteJob)
   $('#job-update').on('submit', onUpdateJob)
   $('#job-create-modal').on('submit', onCreateJob)
-  $('#getJobsButton').on('click', onGetJobs)
-  $('#clearJobsButton').on('click', onClearJobs)
   $('body').on('click', '.delete-job-button', onDeleteJob)
   $('body').on('click', '.edit', onMarkComplete)
 }
