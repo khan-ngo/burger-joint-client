@@ -1,7 +1,7 @@
 'use strict'
 
 const displayJobsTemplate = require('../templates/job.listing.handlebars')
-// const displaySingleJobTemplate = require('../templates/load-single-template.handlebars')
+// const displaySingleJobTemplate = require('../templates/single-job.handlebars')
 const api = require('./api.js')
 
 const refreshHandlebar = function () {

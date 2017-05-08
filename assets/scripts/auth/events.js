@@ -21,6 +21,7 @@ const onSignInClick = function (event) {
 const onSignUp = function (event) {
   const data = getFormFields(this)
   event.preventDefault()
+
   api.signUp(data)
     .then(ui.signUpSuccess)
     .catch(ui.signUpFailure)
@@ -48,6 +49,22 @@ const onSignOut = function (event) {
   .then(ui.signOutSuccess)
   .catch(ui.signOutFailure)
 }
+
+// const displaySignUp = function (event) {
+//   event.preventDefault()
+//   document.getElementById('sign-in').reset()
+//   $('.sign-up-modal').show()
+//   $('.sign-in-modal').hide()
+//
+//   // Logic to confirm if passwords match
+//
+//
+//
+//   const displayChangePw = function (event) {
+//     event.preventDefault()
+//     $('#change-password-modal').modal('show')
+//
+//     // Logic to confirm if passwords match
 
 const addHandlers = () => {
   $('#sign-up-form').on('click', onSignUpClick)
