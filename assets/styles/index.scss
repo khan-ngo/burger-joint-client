@@ -1,15 +1,39 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
 
-// @import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah');
+@import url('https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister');
+@import url('https://fonts.googleapis.com/css?family=Special+Elite');
+
 
 body {
   // color: #dfdfdf;
   font-color: #000000;
   margin: auto;
   width: 550px;
+  // background-image: url(./images/stars-and-tent.jpg);
 }
 
+#salutaion-message {
+  font-family: 'Love Ya Like A Sister', cursive;
+}
+.jumbotron-msg {
+  font-family: 'Special Elite', cursive;
+}
+
+#jumbotron-top {
+  padding-top: 20px;
+  padding: 20px;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 8px 16px -6px blue;
+}
+
+#jumbotron-list {
+  padding: 10px;
+  background-color: #FFF3ED;
+  box-shadow: 0 8px 16px -6px black;
+}
 .navbar {
   padding-top: 20px;
 }

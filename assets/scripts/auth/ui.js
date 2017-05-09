@@ -31,7 +31,7 @@ const signInSuccess = (data) => {
   $('#signUpModal').hide()
   $('.header-message').hide()
   $('#signInModal').hide()
-  $('#salutaion-message').html('To-Do List')
+  $('#salutaion-message').html('Family Camp Checklist')
   $('.nav-message').hide()
   $('#ChangePasswordSuccess').hide()
   $('#change-password').trigger('reset')
