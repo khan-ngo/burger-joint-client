@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title>myList</title>
+      <title>Family Camp Checklist</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <!-- Do not add `link` tags unless you know what you are doing -->
@@ -13,8 +13,12 @@
     </head>
 
     <body class="container">
-
-          <h1 id="salutaion-message" class="title_message">Welcome</h1>
+<div></div>
+          <div id="jumbotron-top" class="jumbotron jumbotron-fluid  beforesignin">
+            <h2 id="salutaion-message" class="title_message ">Family Camp Checklist</h2>
+            <div class="jumbotron-msg container push-spaces">
+              <p>Take the stress out of your family camping experience by creating a list of items to pack. Simply check each item off as you pack them.</div>
+            </div>
 
 <!-- ========= Authenticat Container ============ -->
       <!-- SIGN IN -->
@@ -150,7 +154,7 @@
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="form-title mdl-card__title">
-              <h3 class="modal-header">Add Task</h3>
+              <h3 class="modal-header">Add Item</h3>
             </div>
             <div class="form">
             <form id="job-create-modal-form">
@@ -162,7 +166,7 @@
                 </div>
 
                   <div class="modal-footer">
-                  <button type="submit" name="submit" value="CreateJob" class="btn btn-primary btn-block"> Add Task</button>
+                  <button type="submit" name="submit" value="CreateJob" class="btn btn-primary btn-block"> Add Item to Checklist</button>
                   <button type="button" class="btn btn-resolved btn-block" data-dismiss="modal">Close</button>
                 </div>
               </form>
@@ -176,12 +180,12 @@
   <!-- Task Flow -->
 <div class="task-work-flow">
     <div class="task-buttons align-center">
-      <button id="add-task-btn" type="button" class="btn btn-primary addTaskBtn" data-toggle="modal" data-target=".bs-example-modal-lg">Add Task</button>
+      <button id="add-task-btn" type="button" class="btn btn-primary addTaskBtn" data-toggle="modal" data-target=".bs-example-modal-lg">Add Item</button>
       <!-- <button id="getJobsButton" class="btn btn-primary">Get My Tasks</button>
       <button id="clearJobsButton" class="btn btn-primary">Hide Tasks</button> -->
   </div>
-  <div class="jumbotron jumbotron-fluid beforesignin">
-    <div class="container-fluid">
+  <div id="jumbotron-list" class="jumbotron beforesignin">
+    <div class="container">
       <div id="content" class="content"></div>
     </div>
   </div>
