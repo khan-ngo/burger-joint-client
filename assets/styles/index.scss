@@ -31,11 +31,39 @@ body {
 
 #jumbotron-list {
   padding: 10px;
+  font-family: 'Special Elite', cursive;
   background-color: #FFF3ED;
   box-shadow: 0 8px 16px -6px black;
 }
+
+.checklist-title {
+font-family: 'Love Ya Like A Sister', cursive;
+border-bottom: 5px;
+}
+
+.close {
+  // position: absolute;
+  // right: 0;
+  // top: 0;
+  padding: 12px 16px 12px 16px
+}
+
+.close:hover {
+  background-color: #f44336;
+  color: white;
+}
+
 .navbar {
   padding-top: 20px;
+}
+
+
+/* When clicked on, add a background color and strike out text */
+.checked {
+  background: #888;
+  color: red;
+  text-decoration: line-through;
+// color:red;text-decoration:line-through
 }
 
 .align-center, .auth-alert {

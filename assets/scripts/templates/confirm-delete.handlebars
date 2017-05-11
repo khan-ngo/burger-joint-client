@@ -1,20 +1,16 @@
 <div id="confirm-delete-modal" class="modal fade" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog" role="dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h3 class="modal-title">Confirm Delete</h3>
       </div>
       <div class="modal-body">
-        <p>Are you sure you want to delete the follow note?</p>
-        <p id="delete-title"></p>
-        <p id="delete-detail"></p>
+        <p>Are you sure you want to delete " {{task}} "?</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary btn-delete-confirmation">Delete</button>
+        <button id="confirm-delete-btn" type="submit"  name="submit" value="delete" class="btn btn-danger btn-sm  btn-block confirm-delete-btn">Delete Item</button>
+        <button type="button" data-dismiss="modal" class="btn btn-sm btn-block">Cancel</button>
       </div>
-    </div><!-- /.modal-content -->
-
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+    </div>
+  </div>
+</div>

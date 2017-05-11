@@ -1,6 +1,6 @@
 #!/bin/bash
 
-TOKEN="BAhJIiVlZDY5ZDY5N2Q1OGQ4YTdiMzkzYmZhMWU0N2VhYzg3YwY6BkVG--6773cf07a8e748e80017b009924482f3ab170135"
+TOKEN="BAhJIiVhMTIyOTBmNTkxNDc3NjM1OWM4ODA4NmNjMDM2M2M3ZAY6BkVG--5cc73b91c06b86205cf9bd609abe2d97ae466f03"
 
 
   curl --include --request POST http://localhost:4741/jobs \
@@ -8,6 +8,6 @@ TOKEN="BAhJIiVlZDY5ZDY5N2Q1OGQ4YTdiMzkzYmZhMWU0N2VhYzg3YwY6BkVG--6773cf07a8e748e
     --header "Content-Type: application/json" \
     --data '{
       "job": {
-        "task": "New Item"
+        "task": ""
       }
     }'

@@ -51,11 +51,11 @@ const signOutSuccess = () => {
   $('#confirm-logout').modal('hide')
   $('.nav-btns').hide()
   $('.task-work-flow').hide()
-
   $('#signUpModal').hide()
-  $('#signInModal').show()
   $('#signUpModal').trigger('reset')
   $('#signInModal').trigger('reset')
+  $('.form-control').val('')
+  $('#signInModal').show()
 }
 
 const signOutFailure = (error) => {

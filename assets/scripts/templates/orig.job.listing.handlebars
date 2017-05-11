@@ -4,7 +4,7 @@
 
           <label data-id={{job.id}}>
             {{#if completed}}
-              <input class="edit btn" type="checkbox" autocomplete="off" checked data-id={{job.id}}> <span style='color:grey;text-decoration:line-through' class="task-name"> {{task}} <span>
+              <input class="edit btn" type="checkbox" autocomplete="off" checked data-id={{job.id}}> <span style='color:red;text-decoration:line-through' class="task-name"> {{task}} <span>
             {{else}}
               <input class="edit btn" type="checkbox" autocomplete="off" data-id={{job.id}}> <span class="task-name"> {{task}} <span>
             {{/if}}
